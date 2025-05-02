@@ -4,95 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mako 3D</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f9fbfc;
-      color: #222;
-    }
-    header {
-      background-color: #ffffff;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #e0e0e0;
-    }
-    nav a {
-      margin-left: 1.5rem;
-      text-decoration: none;
-      color: #005f99;
-      font-weight: 500;
-    }
-    .hero {
-      padding: 4rem 2rem;
-      text-align: center;
-      background: linear-gradient(to right, #d6ebff, #f0faff);
-    }
-    .hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-    }
-    .hero p {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-    }
-    .hero button {
-      padding: 0.8rem 1.5rem;
-      font-size: 1rem;
-      border: none;
-      background-color: #007acc;
-      color: white;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-    section {
-      padding: 3rem 2rem;
-      max-width: 1000px;
-      margin: auto;
-    }
-    .services, .cases {
-      display: grid;
-      gap: 1.5rem;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    }
-    .card {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-    footer {
-      background-color: #f1f1f1;
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-      color: #555;
-    }
-    .contact-form input,
-    .contact-form textarea {
-      width: 100%;
-      padding: 0.8rem;
-      margin: 0.5rem 0;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-family: inherit;
-    }
-    .contact-form button {
-      margin-top: 1rem;
-      background-color: #007acc;
-      color: white;
-      border: none;
-      padding: 0.8rem 1.2rem;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="formulario.css" />
+  
 </head>
 <body>
   <header>
-    <h2>Mako 3D</h2>
+    <img src="img/IMG_9541-removebg-preview.png" alt="Mako 3D" class="logo" />
     <nav>
       <a href="#servicios">Servicios</a>
       <a href="#casos">Casos</a>
@@ -102,17 +20,19 @@
   </header>
 
   <section class="hero">
-    <h1>Soluciones en impresión 3D</h1>
-    <p>Diseño, impresión de piezas grandes (hasta 80x80x100 cm) y asesoramiento técnico personalizado.</p>
-    <button onclick="document.getElementById('contacto').scrollIntoView({behavior: 'smooth'})">Solicitar cotización</button>
+    <div class="hero-overlay">
+      <h1>Soluciones en impresión 3D</h1>
+      <p>Diseño, fabricación de piezas industriales y asesoramiento técnico personalizado.</p>
+      <button onclick="document.getElementById('contacto').scrollIntoView({behavior: 'smooth'})">Solicitar cotización</button>
+    </div>
   </section>
 
   <section id="servicios">
     <h2>Servicios</h2>
     <div class="services">
       <div class="card">
-        <h3>Impresión 3D técnica y en volumen</h3>
-        <p>Prototipos, piezas finales y producciones industriales en materiales técnicos.</p>
+        <h3>Impresión 3D</h3>
+        <p>Prototipos, piezas finales de hasta 80cm x 80cm x 100cm y producciones industriales en materiales técnicos.</p>
       </div>
       <div class="card">
         <h3>Diseño y modelado 3D</h3>
@@ -133,13 +53,16 @@
     <h2>Casos destacados</h2>
     <div class="cases">
       <div class="card">
-        <p><strong>Producción de 300 piezas técnicas</strong> en ABS para maquinaria agrícola.</p>
+        <img src="img/caso1.jpg" alt="Pieza técnica" />
+        <p><strong>Producción de 500 piezas técnicas</strong> en ABS de cobertores de manubrios para bicicletas de la ciudad.</p>
       </div>
       <div class="card">
-        <p><strong>Prototipo funcional optimizado</strong> en PETG Carbono con alta resistencia.</p>
+        <img src="img/caso2.jpg" alt="Prototipo funcional" />
+        <p><strong>Desarrollo y producción del housing</strong> para un sistema de monitoreo ginecológico en PETG.</p>
       </div>
       <div class="card">
-        <p><strong>Escenografía de gran tamaño</strong> en PLA+, piezas de hasta 80x100 cm.</p>
+        <img src="img/caso3.jpg" alt="Merchandising" />
+        <p><strong>Diseño y producción</strong> en PLA de 100 unidades de un puzzle box.</p>
       </div>
     </div>
   </section>
@@ -151,17 +74,37 @@
 
   <section id="contacto">
     <h2>Contacto</h2>
-    <form class="contact-form">
-      <input type="text" placeholder="Nombre" required />
-      <input type="email" placeholder="Email" required />
-      <textarea rows="5" placeholder="Mensaje" required></textarea>
+  
+    <form id="contact-form" class="contact-form" action="https://formspree.io/f/xgvkayyz" method="POST" enctype="multipart/form-data">
+      <input type="text" name="nombre" placeholder="Nombre completo" required autocomplete="name" />
+  
+
+      <input type="email" id="email" name="email" placeholder="Email" required autocomplete="email" />
+  
+      <input type="tel" id="phone" name="phone" placeholder="Celular" pattern="^(\+54\s?)?(11|[2368]\d)(\s?\d{4})(\s?\d{4})$" required autocomplete="tel" />
+  
+      <textarea id="message" name="mensaje" rows="5" placeholder="Contanos tu idea o necesidad..." required></textarea>
+  
+      <label for="archivo">¿Tenés algún archivo para cotizar? (opcional)</label>
+      <input id="archivo" type="file" name="archivo" accept=".stl,.step,.obj,.jpg,.png,.pdf" />
+  
+      <div id="form-status"></div> <!-- Moved here for visibility -->
+  
       <button type="submit">Enviar</button>
     </form>
   </section>
+  
+
 
   <footer>
     <p>&copy; 2025 Mako 3D. Todos los derechos reservados.</p>
-    <p>Seguinos en Instagram, TikTok y LinkedIn.</p>
+    <div class="social-icons">
+      <a href="https://www.instagram.com/mako3di" target="_blank"><img src="img/instagram_733614.png" alt="Instagram" /></a>
+      <a href="https://www.tiktok.com/@mako.3d" target="_blank"><img src="img/tiktok_3116491.png" alt="TikTok" /></a>
+      <a href="https://www.linkedin.com/in/ibenassi/" target="_blank"><img src="img/linkedin_3536569.png" alt="LinkedIn" /></a>
+    </div>
   </footer>
+  
+  <script src="formulario.js"></script>
 </body>
 </html>
