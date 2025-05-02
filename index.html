@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mako 3D</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9fbfc;
+      color: #222;
+    }
+    header {
+      background-color: #ffffff;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    nav a {
+      margin-left: 1.5rem;
+      text-decoration: none;
+      color: #005f99;
+      font-weight: 500;
+    }
+    .hero {
+      padding: 4rem 2rem;
+      text-align: center;
+      background: linear-gradient(to right, #d6ebff, #f0faff);
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+    .hero button {
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      border: none;
+      background-color: #007acc;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    section {
+      padding: 3rem 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .services, .cases {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+    .card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    footer {
+      background-color: #f1f1f1;
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #555;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.8rem;
+      margin: 0.5rem 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-family: inherit;
+    }
+    .contact-form button {
+      margin-top: 1rem;
+      background-color: #007acc;
+      color: white;
+      border: none;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h2>Mako 3D</h2>
+    <nav>
+      <a href="#servicios">Servicios</a>
+      <a href="#casos">Casos</a>
+      <a href="#sobre">Sobre Mako</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Soluciones en impresión 3D</h1>
+    <p>Diseño, impresión de piezas grandes (hasta 80x80x100 cm) y asesoramiento técnico personalizado.</p>
+    <button onclick="document.getElementById('contacto').scrollIntoView({behavior: 'smooth'})">Solicitar cotización</button>
+  </section>
+
+  <section id="servicios">
+    <h2>Servicios</h2>
+    <div class="services">
+      <div class="card">
+        <h3>Impresión 3D técnica y en volumen</h3>
+        <p>Prototipos, piezas finales y producciones industriales en materiales técnicos.</p>
+      </div>
+      <div class="card">
+        <h3>Diseño y modelado 3D</h3>
+        <p>Transformamos ideas en archivos imprimibles optimizados para producción.</p>
+      </div>
+      <div class="card">
+        <h3>Venta de impresoras</h3>
+        <p>Equipos confiables para trabajo continuo. Te ayudamos a elegir la mejor opción.</p>
+      </div>
+      <div class="card">
+        <h3>Asesoramiento personalizado</h3>
+        <p>Evaluamos cada caso con sinceridad, incluso si eso significa no venderte nada.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="casos">
+    <h2>Casos destacados</h2>
+    <div class="cases">
+      <div class="card">
+        <p><strong>Producción de 300 piezas técnicas</strong> en ABS para maquinaria agrícola.</p>
+      </div>
+      <div class="card">
+        <p><strong>Prototipo funcional optimizado</strong> en PETG Carbono con alta resistencia.</p>
+      </div>
+      <div class="card">
+        <p><strong>Escenografía de gran tamaño</strong> en PLA+, piezas de hasta 80x100 cm.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="sobre">
+    <h2>Sobre Mako 3D</h2>
+    <p>Con más de 10 años de experiencia en impresión 3D, creamos Mako para trabajar con quienes necesitan más que una pieza: soluciones reales, con acompañamiento, calidad y sinceridad en cada paso.</p>
+  </section>
+
+  <section id="contacto">
+    <h2>Contacto</h2>
+    <form class="contact-form">
+      <input type="text" placeholder="Nombre" required />
+      <input type="email" placeholder="Email" required />
+      <textarea rows="5" placeholder="Mensaje" required></textarea>
+      <button type="submit">Enviar</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Mako 3D. Todos los derechos reservados.</p>
+    <p>Seguinos en Instagram, TikTok y LinkedIn.</p>
+  </footer>
+</body>
+</html>
