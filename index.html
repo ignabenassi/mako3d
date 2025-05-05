@@ -22,15 +22,32 @@
 
 
 <body>
-  <header>
+  <header class="navbar">
     <img src="img/Logo/Logo-h-removebg-preview.png" alt="Mako 3D" class="logo" />
-    <nav>
+    <nav id="nav-links" class="nav-links">
       <a href="#servicios">Servicios</a>
       <!-- <a href="#casos">Casos</a> -->
       <a href="#sobre">Sobre Mako</a>
       <a href="#contacto">Contacto</a>
     </nav>
+    <div class="hamburger" onclick="toggleMenu()">
+      ☰
+    </div>
   </header>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById("nav-links");
+      nav.classList.toggle("active");
+    }
+  
+    // Cierra el menú cuando se hace clic en un link
+    document.querySelectorAll("#nav-links a").forEach(link => {
+      link.addEventListener("click", () => {
+        document.getElementById("nav-links").classList.remove("active");
+      });
+    });
+  </script>
 
   <section class="hero">
     <div class="hero-overlay">
