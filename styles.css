@@ -49,8 +49,11 @@ body {
   }
   
   .nav-links a {
-    color: #183B71;
+    margin-left: 1.5rem;
     text-decoration: none;
+    /*color: #005f99;*/
+    color: #183B71;
+    font-weight: 500;
   }
   
   .hamburger {

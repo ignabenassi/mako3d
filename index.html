@@ -24,30 +24,15 @@
 <body>
   <header class="navbar">
     <img src="img/Logo/Logo-h-removebg-preview.png" alt="Mako 3D" class="logo" />
-    <nav id="nav-links" class="nav-links">
+    <div class="hamburger" id="hamburger">☰</div>
+      <div class="nav-links" id="navLinks">
       <a href="#servicios">Servicios</a>
       <!-- <a href="#casos">Casos</a> -->
       <a href="#sobre">Sobre Mako</a>
       <a href="#contacto">Contacto</a>
-    </nav>
-    <div class="hamburger" onclick="toggleMenu()">
-      ☰
     </div>
+    
   </header>
-
-  <script>
-    function toggleMenu() {
-      const nav = document.getElementById("nav-links");
-      nav.classList.toggle("active");
-    }
-  
-    // Cierra el menú cuando se hace clic en un link
-    document.querySelectorAll("#nav-links a").forEach(link => {
-      link.addEventListener("click", () => {
-        document.getElementById("nav-links").classList.remove("active");
-      });
-    });
-  </script>
 
   <section class="hero">
     <div class="hero-overlay">
@@ -136,5 +121,20 @@
   </footer>
   
   <script src="formulario.js"></script>
+  <script>
+    const hamburger = document.getElementById("hamburger");
+    const navLinks = document.getElementById("navLinks");
+      
+    hamburger.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+  
+    // Cierra el menú al hacer click en un link (en móviles)
+    document.querySelectorAll(".nav-links a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+      });
+    });
+  </script>
 </body>
 </html>
