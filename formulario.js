@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
   
-      const phonePattern = /^[0-9+\-()\s]{7,15}$/;
+      const phonePattern = /^\+?[\d\s\-()]{10,18}$/;
       if (!phone.value || !phonePattern.test(phone.value)) {
         status.innerText = "Por favor, ingresá un número de celular válido.";
         status.classList.add('error', 'show');

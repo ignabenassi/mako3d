@@ -22,6 +22,13 @@
 
 
 <body>
+  <div id="top-bar-whatsapp">
+    <a href="https://wa.me/5491158067003" target="_blank" rel="noopener noreferrer">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="wa-icon">
+      ¿Tenés dudas? Escribinos por WhatsApp
+    </a>
+  </div>
+
   <header class="navbar">
     <img src="img/Logo/Logo-h-removebg-preview.png" alt="Mako 3D" class="logo" />
     <div class="hamburger" id="hamburger">☰</div>
@@ -100,16 +107,34 @@
   
       <textarea id="message" name="mensaje" rows="5" placeholder="Contanos tu idea o necesidad..." required></textarea>
   
-      <label for="archivo">¿Tenés algún archivo para cotizar? (opcional)</label>
-      <input id="archivo" type="file" name="archivo" accept=".stl,.step,.obj,.jpg,.png,.pdf" />
+     <!-- <label for="archivo">¿Tenés algún archivo para cotizar? (opcional)</label>
+      <input id="archivo" type="file" name="archivo" accept=".stl,.step,.obj,.jpg,.png,.pdf" /> -->
   
       <div id="form-status"></div> <!-- Moved here for visibility -->
   
       <button type="submit">Enviar</button>
     </form>
-  </section>
-  
+    
+  </section>  
 
+    <div class="archivo-info-box">
+      <p><strong>¿Tenés un archivo STL o imagen para cotizar?</strong></p>
+      <p>
+        Podes enviarlo por WhatsApp o email:
+      </p>
+    
+      <div class="archivo-botones">
+        <a href="https://wa.me/5491158067003" target="_blank" rel="noopener" class="archivo-btn whatsapp">
+          <img src="img/icons8-whatsapp-50.png" alt="WhatsApp">
+          Enviar por WhatsApp
+        </a>
+    
+        <a href="mailto:info@mako3d.com.ar" class="archivo-btn email">
+          <img src="img/correo.png" alt="Email">
+          Enviar por Email
+        </a>
+      </div>
+    </div>
 
   <footer>
     <p>&copy; 2025 Mako 3D. Todos los derechos reservados.</p>
