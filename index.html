@@ -1,177 +1,209 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <!-- Google tag (gtag.js) -->
+<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-FCPJY449ZR"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-FCPJY449ZR');
 </script>
-  
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>Mako 3D - Impresión 3D profesional en Argentina</title>
-  <meta name="description" content="Impresión 3D de calidad, asesoramiento personalizado y soluciones a medida para empresas y proyectos. Producción en volumen y piezas de gran tamaño.">
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="formulario.css" />
-  
-  <link rel="canonical" href="https://www.mako3d.com.ar/" />
 
-  <!-- Agregá favicon si querés, después lo vemos -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mako 3D - Impresión 3D profesional en Argentina</title>
+<meta name="description" content="Impresión 3D de calidad, asesoramiento personalizado y soluciones a medida para empresas y proyectos. Producción en volumen y piezas de gran tamaño.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.mako3d.com.ar/">
+<meta name="theme-color" content="#090d14">
 
-  <link rel="apple-touch-icon" sizes="180x180" href="img/v2-iconos/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="img/v2-iconos/favicon-32x32.png"> 
-  <link rel="icon" type="image/png" sizes="16x16" href="img/v2-iconos/favicon-16x16.png">
-  <link rel="manifest" href="img/v2-iconos/site.webmanifest">
+<!-- Open Graph / redes sociales -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mako 3D">
+<meta property="og:title" content="Mako 3D - Impresión 3D profesional en Argentina">
+<meta property="og:description" content="Impresión 3D de calidad, asesoramiento personalizado y soluciones a medida para empresas y proyectos.">
+<meta property="og:url" content="https://www.mako3d.com.ar/">
+<meta property="og:image" content="https://www.mako3d.com.ar/img/mesa.jpg">
+<meta property="og:locale" content="es_AR">
+<meta name="twitter:card" content="summary_large_image">
 
+<!-- Favicons -->
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="img/favicon-180.png">
+
+<!-- Cabeceras de seguridad recomendadas (reforzar también a nivel servidor/hosting) -->
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 </head>
-
-
 <body>
-  <div id="top-bar-whatsapp">
-    <a href="https://wa.me/5491158067003" target="_blank" rel="noopener noreferrer">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="wa-icon">
-      ¿Tenés dudas? Escribinos por WhatsApp
-    </a>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <a href="#" class="logo" id="logoTop"><img src="img/logo.png" alt="Mako 3D"></a>
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">☰</button>
+      <div class="navlinks" id="navLinks">
+        <a href="#servicios">Servicios</a>
+        <a href="#portfolio">Trabajos</a>
+        <a href="#sobre">Sobre Mako</a>
+        <a href="#contacto" class="cta-btn">Solicitar cotización</a>
+      </div>
+    </nav>
   </div>
+</header>
 
-  <header class="navbar">
-    <img src="img/Logo/Logo-h-removebg-preview.png" alt="Mako 3D" class="logo" />
-    <div class="hamburger" id="hamburger">☰</div>
-      <div class="nav-links" id="navLinks">
-      <a href="#servicios">Servicios</a>
-      <!-- <a href="#casos">Casos</a> -->
-      <a href="#sobre">Sobre Mako</a>
-      <a href="#contacto">Contacto</a>
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-tag">10+ años en impresión 3D industrial</div>
+    <h1>Construimos <em>capa por capa</em> lo que otros no pueden fabricar.</h1>
+    <p>Diseño, impresión y producción industrial en materiales técnicos. Piezas de hasta 80×80×100 cm, con acompañamiento real en cada proyecto.</p>
+    <div class="hero-actions">
+      <a href="#contacto" class="btn-primary">Solicitar cotización</a>
+      <a href="#portfolio" class="btn-outline">Ver trabajos realizados</a>
     </div>
-    
-  </header>
-
-  <section class="hero">
-    <div class="hero-overlay">
-      <h1>Soluciones en impresión 3D</h1>
-      <p>Diseño, fabricación de piezas industriales y asesoramiento técnico personalizado.</p>
-      <button onclick="document.getElementById('contacto').scrollIntoView({behavior: 'smooth'})">Solicitar cotización</button>
+    <div class="hero-stats">
+      <div><span>80×80×100</span><small>cm de volumen máximo de impresión</small></div>
+      <div><span>10+</span><small>años de experiencia</small></div>
+      <div><span>4</span><small>líneas de servicio</small></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="servicios">
-    <h2>Servicios</h2>
-    <div class="services">
-      <div class="card">
+<section class="services" id="servicios">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-label">// SERVICIOS</span>
+      <h2>Todo el proceso, en un solo lugar</h2>
+      <p>Desde el diseño del archivo hasta la pieza terminada, o el equipo indicado si preferís imprimir vos mismo.</p>
+    </div>
+    <div class="service-grid">
+      <div class="service-card">
+        <span class="num">01</span>
         <h3>Impresión 3D</h3>
-        <p>Prototipos, piezas finales de hasta 80cm x 80cm x 100cm y producciones industriales en materiales técnicos.</p>
+        <p>Prototipos, piezas finales de gran formato y producciones industriales en materiales técnicos.</p>
       </div>
-      <div class="card">
-        <h3>Diseño y modelado 3D</h3>
-        <p>Transformamos ideas en archivos imprimibles optimizados para producción.</p>
+      <div class="service-card">
+        <span class="num">02</span>
+        <h3>Diseño y modelado</h3>
+        <p>Transformamos ideas en archivos imprimibles, optimizados para producción real.</p>
       </div>
-      <div class="card">
+      <div class="service-card">
+        <span class="num">03</span>
         <h3>Venta de impresoras</h3>
         <p>Equipos confiables para trabajo continuo. Te ayudamos a elegir la mejor opción.</p>
       </div>
-      <div class="card">
-        <h3>Asesoramiento personalizado</h3>
+      <div class="service-card">
+        <span class="num">04</span>
+        <h3>Asesoramiento</h3>
         <p>Evaluamos cada caso con sinceridad, incluso si eso significa no venderte nada.</p>
       </div>
     </div>
-  </section>
-<!-- 
-  <section id="casos">
-    <h2>Casos destacados</h2>
-    <div class="cases">
-      <div class="card">
-        <img src="img/caso1.jpg" alt="Pieza técnica" />
-        <p><strong>Producción de 500 piezas técnicas</strong> en ABS de cobertores de manubrios para bicicletas de la ciudad.</p>
+  </div>
+</section>
+
+<section class="portfolio" id="portfolio">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-label">// TRABAJOS REALIZADOS</span>
+      <h2>Piezas que ya están en uso</h2>
+      <p>Una muestra de proyectos entregados: mobiliario, señalética, salud y diseño funcional.</p>
+    </div>
+    <div class="p-grid">
+      <div class="p-card p-wide">
+        <img src="img/mesa.jpg" alt="Mesa de diseño impresa en 3D">
+        <div class="cap"><small>MOBILIARIO A MEDIDA</small><p>Mesa de diseño impresa en una sola pieza</p></div>
       </div>
-      <div class="card">
-        <img src="img/caso2.jpg" alt="Prototipo funcional" />
-        <p><strong>Desarrollo y producción del housing</strong> para un sistema de monitoreo ginecológico en PETG.</p>
+      <div class="p-card">
+        <img src="img/cartel.jpg" alt="Cartel institucional impreso en 3D">
+        <div class="cap"><small>SEÑALÉTICA</small><p>Cartelería institucional a medida</p></div>
       </div>
-      <div class="card">
-        <img src="img/caso3.jpg" alt="Merchandising" />
-        <p><strong>Diseño y producción</strong> en PLA de 100 unidades de un puzzle box.</p>
+      <div class="p-card">
+        <img src="img/pieza-dorada.jpg" alt="Pieza con acabado metalizado">
+        <div class="cap"><small>TERMINACIÓN PREMIUM</small><p>Acabado metalizado de alta precisión</p></div>
+      </div>
+      <div class="p-card p-wide">
+        <img src="img/bandeja-medica.jpg" alt="Organizador técnico para carro de emergencias médicas">
+        <div class="cap"><small>SALUD</small><p>Organizador técnico para carro de emergencias</p></div>
+      </div>
+      <div class="p-card">
+        <img src="img/caja-exterior.jpg" alt="Carcasa técnica para exterior">
+        <div class="cap"><small>USO EXTERIOR</small><p>Carcasas técnicas resistentes a la intemperie</p></div>
+      </div>
+      <div class="p-card">
+        <img src="img/anillo.jpg" alt="Pieza decorativa circular de gran formato">
+        <div class="cap"><small>GRAN FORMATO</small><p>Prototipado y desarrollo de producto</p></div>
+      </div>
+      <div class="p-card">
+        <img src="img/pieza-negra.jpg" alt="Pieza de diseño de producto">
+        <div class="cap"><small>DISEÑO DE PRODUCTO</small><p>Pieza técnica para acabado metalizado</p></div>
       </div>
     </div>
-  </section>
--->
-  <section id="sobre">
-    <h2>Sobre Mako 3D</h2>
-    <p>Con más de 10 años de experiencia en impresión 3D, creamos Mako para trabajar con quienes necesitan más que una pieza: soluciones reales, con acompañamiento, calidad y sinceridad en cada paso.</p>
-  </section>
+  </div>
+</section>
 
-  <section id="contacto">
-    <h2>Contacto</h2>
-  
-    <form id="contact-form" class="contact-form" action="https://formspree.io/f/xgvkayyz" method="POST" enctype="multipart/form-data">
-      <input type="text" name="nombre" placeholder="Nombre completo" required autocomplete="name" />
-  
-
-      <input type="email" id="email" name="email" placeholder="Email" required autocomplete="email" />
-  
-      <input type="tel" id="phone" name="phone" placeholder="Celular" pattern="^(\+54\s?)?(11|[2368]\d)(\s?\d{4})(\s?\d{4})$" required autocomplete="tel" />
-  
-      <textarea id="message" name="mensaje" rows="5" placeholder="Contanos tu idea o necesidad..." required></textarea>
-  
-     <!-- <label for="archivo">¿Tenés algún archivo para cotizar? (opcional)</label>
-      <input id="archivo" type="file" name="archivo" accept=".stl,.step,.obj,.jpg,.png,.pdf" /> -->
-  
-      <div id="form-status"></div> <!-- Moved here for visibility -->
-  
-      <button type="submit">Enviar</button>
-    </form>
-    
-  </section>  
-
-    <div class="archivo-info-box">
-      <p><strong>¿Tenés un archivo STL o imagen para cotizar?</strong></p>
-      <p>
-        Podes enviarlo por WhatsApp o email:
-      </p>
-    
-      <div class="archivo-botones">
-        <a href="https://wa.me/5491158067003" target="_blank" rel="noopener" class="archivo-btn whatsapp">
-          <img src="img/icons8-whatsapp-50.png" alt="WhatsApp">
-          Enviar por WhatsApp
-        </a>
-    
-        <a href="mailto:info@mako3d.com.ar" class="archivo-btn email">
-          <img src="img/correo.png" alt="Email">
-          Enviar por Email
-        </a>
+<section class="about" id="sobre">
+  <div class="wrap about-grid">
+    <div class="about-copy">
+      <span class="sec-label">// SOBRE MAKO</span>
+      <h2>Soluciones reales, no solo piezas</h2>
+      <p>Con más de 10 años de experiencia en impresión 3D, creamos Mako para trabajar con quienes necesitan más que una pieza: soluciones con acompañamiento, calidad y sinceridad en cada paso.</p>
+      <p>Trabajamos con empresas y particulares que necesitan resultados confiables, sin vueltas.</p>
+      <div class="about-stats">
+        <div><span>+10</span><small>años de trayectoria</small></div>
+        <div><span>100%</span><small>asesoramiento sin compromiso</small></div>
       </div>
     </div>
-
-  <footer>
-    <p>&copy; 2025 Mako 3D. Todos los derechos reservados.</p>
-    <div class="social-icons">
-      <a href="https://wa.me/5491158067003" target="_blank"><img src="img/icons8-whatsapp-50.png" alt="WhatsApp" /></a>
-      <a href="https://www.linkedin.com/company/mako3d" target="_blank"><img src="img/linkedin_3536569.png" alt="LinkedIn" /></a>
-      <a href="https://www.tiktok.com/@mako.3d" target="_blank"><img src="img/tiktok_3116491.png" alt="TikTok" /></a>
-      <a href="https://www.instagram.com/mako3di" target="_blank"><img src="img/instagram_733614.png" alt="Instagram" /></a>     
-      <a href="mailto:info@mako3d.com.ar" target="_blank"><img src="img/correo.png" alt="Email" /> 
+    <div class="about-visual">
+      <img src="img/equipo-printer.jpg" alt="Trabajando con impresora 3D de resina en el taller">
+      <div class="av-cap"><small>EN EL TALLER</small><p>Cada pieza se revisa a mano antes de salir</p></div>
     </div>
-  </footer>
-  
-  <script src="formulario.js"></script>
-  <script>
-    const hamburger = document.getElementById("hamburger");
-    const navLinks = document.getElementById("navLinks");
-      
-    hamburger.addEventListener("click", () => {
-      navLinks.classList.toggle("active");
-    });
-  
-    // Cierra el menú al hacer click en un link (en móviles)
-    document.querySelectorAll(".nav-links a").forEach(link => {
-      link.addEventListener("click", () => {
-        navLinks.classList.remove("active");
-      });
-    });
-  </script>
+  </div>
+</section>
+
+<section class="contact" id="contacto">
+  <div class="wrap">
+    <div class="contact-box">
+      <div>
+        <h2>¿Tenés un archivo STL o una idea para cotizar?</h2>
+        <p>Enviala por WhatsApp o email y te respondemos con un presupuesto real.</p>
+      </div>
+      <div class="contact-actions">
+        <a href="https://wa.me/5491158067003?text=Hola%21%20Vengo%20de%20la%20p%C3%A1gina%20web%20de%20Mako%203D%20y%20quiero%20hacer%20una%20consulta." target="_blank" rel="noopener noreferrer" class="btn-primary">Enviar por WhatsApp</a>
+        <a href="mailto:info@mako3d.com.ar?subject=Consulta%20desde%20la%20web%20-%20Mako%203D&body=Hola%2C%20vengo%20de%20la%20p%C3%A1gina%20web%20y%20quiero%20hacer%20una%20consulta." rel="noopener noreferrer" class="btn-outline">Enviar por Email</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-row">
+      <div>© 2026 Mako 3D. Todos los derechos reservados. · <a href="politica-de-privacidad.html" style="text-decoration:underline;">Política de Privacidad</a></div>
+      <div class="foot-social">
+        <a href="https://www.instagram.com/mako3d.ar" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://www.linkedin.com/company/mako3d" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://www.tiktok.com/@mako.3d" target="_blank" rel="noopener noreferrer">TikTok</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox">
+  <div class="lb-close" id="lbClose">CERRAR ✕</div>
+  <img id="lbImg" src="" alt="">
+  <div class="lb-cap" id="lbCap"></div>
+</div>
+
+<button id="toTop" class="to-top" aria-label="Volver arriba">↑</button>
+
+<script src="script.js" defer></script>
+
 </body>
 </html>
