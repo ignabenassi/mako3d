@@ -39,6 +39,12 @@
     animation:buildLayers 1.6s cubic-bezier(.2,.7,.3,1) forwards;
   }
 
+  /* BARRA DE PROGRESO DE SCROLL */
+  .scroll-progress{
+    position:fixed;top:0;left:0;height:3px;width:0%;z-index:70;
+    background:var(--blue);box-shadow:0 0 8px var(--blue);
+  }
+
   /* BOTÓN FLOTANTE "VOLVER ARRIBA" */
   .to-top{
     position:fixed;left:24px;bottom:24px;z-index:60;
@@ -136,7 +142,7 @@
   /* PORTFOLIO */
   .portfolio{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
   .p-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-  .p-card{position:relative;border-radius:10px;overflow:hidden;border:1px solid var(--line);aspect-ratio:4/5;}
+  .p-card{position:relative;border-radius:10px;overflow:hidden;border:2px solid var(--line);aspect-ratio:4/5;transition:border-color .2s;}
   .p-wide{grid-column:span 2;aspect-ratio:8/5;}
   .p-card img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.95) contrast(1.05);transition:filter .3s;}
   .p-card:hover img{filter:saturate(1.05) contrast(1.08) brightness(1.05);}
@@ -265,6 +271,18 @@
     background:repeating-linear-gradient(180deg, rgba(59,124,245,.10) 0px, rgba(59,124,245,.10) 1px, transparent 1px, transparent 6px);
     animation:layerGrow 1.4s cubic-bezier(.2,.7,.3,1) forwards;
   }
+  .hero::after{
+    content:'';position:absolute;left:0;right:0;height:2px;pointer-events:none;
+    background:linear-gradient(90deg, transparent, rgba(127,180,255,.9), transparent);
+    box-shadow:0 0 20px 2px rgba(59,124,245,.6);
+    animation:heroBeam 1.5s cubic-bezier(.2,.7,.3,1) forwards;
+  }
+  @keyframes heroBeam{
+    0%{top:0%;opacity:0;}
+    8%{opacity:1;}
+    92%{opacity:1;}
+    100%{top:100%;opacity:0;}
+  }
 
   /* BUTTON MICRO-INTERACTION: capa que se dibuja en el borde */
   .btn-primary,.btn-outline,.cta-btn{position:relative;overflow:hidden;isolation:isolate;}
@@ -283,6 +301,28 @@
   /* PORTFOLIO parallax + lightbox trigger */
   .p-card{cursor:zoom-in;}
   .p-card img{will-change:transform;}
+
+  /* Revelado "impreso" al entrar en viewport (JS agrega .in-view) */
+  .p-card{opacity:0;}
+  .p-card.in-view{
+    opacity:1;
+    animation:cardReveal 1.6s cubic-bezier(.2,.7,.3,1) forwards;
+  }
+  @keyframes cardReveal{
+    from{clip-path:circle(0% at 50% 50%);}
+    to{clip-path:circle(150% at 50% 50%);}
+  }
+
+  /* Va después de .in-view a propósito: comparten la propiedad "animation"
+     y con igual especificidad, el orden decide quién gana en la cascada */
+  /* El giro del borde se maneja por JS (ver script.js) para no compartir
+     la propiedad "animation" con .in-view y evitar que se reinicie el revelado */
+  .p-grid .p-card:nth-child(2){transition-delay:.08s;}
+  .p-grid .p-card:nth-child(3){transition-delay:.16s;}
+  .p-grid .p-card:nth-child(4){transition-delay:.06s;}
+  .p-grid .p-card:nth-child(5){transition-delay:.1s;}
+  .p-grid .p-card:nth-child(6){transition-delay:.18s;}
+  .p-grid .p-card:nth-child(7){transition-delay:.26s;}
 
   /* LIGHTBOX */
   .lightbox{

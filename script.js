@@ -1,3 +1,34 @@
+  // --- Barra de progreso de scroll ---
+  const scrollProgress = document.getElementById('scrollProgress');
+  if (scrollProgress) {
+    window.addEventListener('scroll', () => {
+      const h = document.documentElement;
+      const pct = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+      scrollProgress.style.width = pct + '%';
+    }, { passive: true });
+  }
+
+  // --- Borde giratorio en fotos del portfolio (manejado por JS a propósito) ---
+  document.querySelectorAll('.p-card').forEach(card => {
+    let angle = 0;
+    let rafId = null;
+    function tick() {
+      angle = (angle + 1) % 360;
+      card.style.borderColor = 'transparent';
+      card.style.background = `conic-gradient(from ${angle}deg, var(--blue), transparent 60deg) border-box`;
+      rafId = requestAnimationFrame(tick);
+    }
+    card.addEventListener('mouseenter', () => {
+      if (!rafId) tick();
+    });
+    card.addEventListener('mouseleave', () => {
+      cancelAnimationFrame(rafId);
+      rafId = null;
+      card.style.borderColor = '';
+      card.style.background = '';
+    });
+  });
+
   // --- Logo: volver arriba ---
   const logoTop = document.getElementById('logoTop');
   if (logoTop) {
@@ -69,6 +100,18 @@
     });
   }, {threshold:.4});
   revealTargets.forEach(t => revealObserver.observe(t));
+
+  // --- Revelado "impreso" de las tarjetas del portfolio ---
+  const pCards = document.querySelectorAll('.p-card');
+  const cardObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('in-view');
+        cardObserver.unobserve(entry.target);
+      }
+    });
+  }, {threshold:.15});
+  pCards.forEach(card => cardObserver.observe(card));
 
   // --- Parallax sutil en portfolio ---
   const pImgs = document.querySelectorAll('.p-card img');
