@@ -29,6 +29,19 @@
     });
   });
 
+  // --- Analytics: medir clics de contacto (WhatsApp / email) como leads ---
+  document.querySelectorAll('a[href^="https://wa.me"], a[href^="mailto:"]').forEach(link => {
+    link.addEventListener('click', () => {
+      if (typeof gtag !== 'function') return;
+      const method = link.href.startsWith('mailto:') ? 'email' : 'whatsapp';
+      const section = link.closest('section, footer');
+      gtag('event', 'generate_lead', {
+        method: method,
+        location: link.classList.contains('wa-float') ? 'boton_flotante' : (section ? (section.id || section.className) : 'otro')
+      });
+    });
+  });
+
   // --- Logo: volver arriba ---
   const logoTop = document.getElementById('logoTop');
   if (logoTop) {
