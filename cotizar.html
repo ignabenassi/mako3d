@@ -21,13 +21,13 @@
 <link rel="apple-touch-icon" sizes="180x180" href="img/favicon-180.png">
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-FCPJY449ZR"></script>
-<script src="cotizar-analytics.js?v=6"></script>
+<script src="cotizar-analytics.js?v=7"></script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="cotizar.css?v=6">
+<link rel="stylesheet" href="cotizar.css?v=7">
 </head>
 <body>
 <div class="scroll-progress" id="scrollProgress"></div>
@@ -82,7 +82,11 @@
         </label>
         <label class="cz-opcion">
           <input type="radio" name="aplicacion" value="exterior">
-          <span><strong>Exterior, sol o humedad</strong><small>Piezas que van al aire libre, al sol o en ambientes húmedos.</small></span>
+          <span><strong>Exterior o sol directo</strong><small>Piezas al aire libre o expuestas al sol: resisten los rayos UV sin ponerse quebradizas.</small></span>
+        </label>
+        <label class="cz-opcion">
+          <input type="radio" name="aplicacion" value="humedad">
+          <span><strong>Humedad, agua o golpes</strong><small>Piezas que se mojan, están en ambientes húmedos o reciben golpes.</small></span>
         </label>
         <label class="cz-opcion">
           <input type="radio" name="aplicacion" value="calor">
@@ -94,7 +98,7 @@
         </label>
       </div>
       <label class="cz-campo-suelto">¿Necesitás un material en particular? <small>(opcional, lo confirmamos a mano)</small>
-        <input id="materialPreferido" maxlength="200" placeholder="Por ejemplo: PETG negro, nylon con fibra de carbono…">
+        <input id="materialPreferido" maxlength="200" placeholder="Por ejemplo: PETG negro, TPU flexible, nylon con fibra de carbono…">
       </label>
 
       <div class="cz-turnstile" id="turnstile"></div>
@@ -205,6 +209,6 @@
 </dialog>
 
 <script src="script.js" defer></script>
-<script type="module" src="cotizar.js?v=6"></script>
+<script type="module" src="cotizar.js?v=7"></script>
 </body>
 </html>
