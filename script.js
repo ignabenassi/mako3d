@@ -155,7 +155,10 @@
       lightbox.classList.add('open');
     });
   });
-  function closeLb(){ lightbox.classList.remove('open'); }
-  document.getElementById('lbClose').addEventListener('click', closeLb);
-  lightbox.addEventListener('click', (e)=>{ if(e.target === lightbox) closeLb(); });
-  document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeLb(); });
+  // La página del cotizador no tiene lightbox.
+  if (lightbox) {
+    function closeLb(){ lightbox.classList.remove('open'); }
+    document.getElementById('lbClose').addEventListener('click', closeLb);
+    lightbox.addEventListener('click', (e)=>{ if(e.target === lightbox) closeLb(); });
+    document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeLb(); });
+  }
