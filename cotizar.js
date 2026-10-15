@@ -288,7 +288,9 @@ function selectorCantidad(p) {
 function precioPieza(p) {
   if (p.precio_unitario_ars == null) return el('div', { class: 'cz-precio' }, el('small', {}, 'Precio a confirmar'));
   const ahorra = p.subtotal_pedida_sola_ars > p.subtotal_ars;
+  const rebajado = p.precio_unitario_regular_ars > p.precio_unitario_ars;
   return el('div', { class: 'cz-precio' },
+    rebajado ? el('small', {}, el('s', {}, `${pesos.format(p.precio_unitario_regular_ars)} c/u`)) : null,
     el('span', { class: 'cz-unit' }, `${pesos.format(p.precio_unitario_ars)} c/u`),
     p.cantidad > 1 ? el('small', {}, `Subtotal ${pesos.format(p.subtotal_ars)}`) : null,
     ahorra ? el('small', {}, 'Pedida sola: ', el('s', {}, pesos.format(p.subtotal_pedida_sola_ars))) : null,
@@ -307,7 +309,19 @@ function dibujarResumen() {
     )];
 
   if (r.precio?.total_ars != null) {
-    hijos.push(el('div', { class: 'cz-total' }, el('span', {}, 'Total estimado'), el('strong', {}, pesos.format(r.precio.total_ars))));
+    const promo = r.precio.promocion;
+    if (promo) {
+      const [a, m, d] = promo.hasta.split('-');
+      hijos.push(el('p', { class: 'cz-promo' },
+        el('strong', {}, `${promo.texto}: ${Math.round(promo.descuento * 100)}% de descuento`),
+        ` hasta el ${d}/${m}/${a}.`));
+    }
+    hijos.push(el('div', { class: 'cz-total' }, el('span', {}, 'Total estimado'),
+      r.precio.total_regular_ars > r.precio.total_ars ? el('s', { class: 'cz-regular' }, pesos.format(r.precio.total_regular_ars)) : null,
+      el('strong', {}, pesos.format(r.precio.total_ars))));
+    if (r.precio.descuento_por_kilos > 0) {
+      hijos.push(el('p', { class: 'cz-ahorro' }, `Incluye ${Math.round(r.precio.descuento_por_kilos * 100)}% de descuento por volumen.`));
+    }
     if (r.precio.ahorro_ars > 0) {
       hijos.push(el('p', { class: 'cz-ahorro' }, `Ahorrás ${pesos.format(r.precio.ahorro_ars)} frente a pedir cada pieza por separado.`));
     }
