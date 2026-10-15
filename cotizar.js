@@ -23,7 +23,26 @@ const estado = {
   piezas: {},            // id -> { cantidad, escala }
   quitadas: new Set(),   // piezas que el cliente sacó del pedido
   turnstile: '',
+  confirmada: false,     // el pedido ya se envió
 };
+
+// ---------- sesión: recuperar la cotización si el cliente sale y vuelve ----------
+
+const CLAVE_SESION = 'mako_cotizacion';
+
+function guardarSesion() {
+  try {
+    if (estado.id && !estado.confirmada) {
+      sessionStorage.setItem(CLAVE_SESION, JSON.stringify({ id: estado.id, aplicacion: aplicacion(), material: materialPreferido() }));
+    } else {
+      sessionStorage.removeItem(CLAVE_SESION);
+    }
+  } catch { /* sin almacenamiento: no se recupera, pero todo lo demás funciona */ }
+}
+
+function leerSesion() {
+  try { return JSON.parse(sessionStorage.getItem(CLAVE_SESION) || 'null'); } catch { return null; }
+}
 
 // ---------- utilidades ----------
 
@@ -191,6 +210,7 @@ async function esperarResultado() {
     const cuerpo = await r.json().catch(() => ({}));
     if (r.status === 404) {
       estado.id = null;
+      guardarSesion();
       mostrarPaso('pasoArchivos');
       return aviso('avisoArchivos', cuerpo.detail || 'La cotización venció. Volvé a cotizar.');
     }
@@ -205,6 +225,7 @@ async function esperarResultado() {
 
 function mostrarResultado(resultado) {
   estado.resultado = resultado;
+  guardarSesion();
   for (const p of resultado.piezas) {
     estado.piezas[p.id] = { cantidad: p.cantidad, escala: p.escala_dudosa ? null : p.escala };
   }
@@ -249,6 +270,7 @@ function quitarPieza(id) {
   if (estado.resultado.piezas.every((p) => estado.quitadas.has(p.id))) {
     estado.id = null;
     estado.resultado = null;
+    guardarSesion();
     mostrarPaso('pasoArchivos');
     return aviso('avisoArchivos', 'Quitaste todas las piezas. Elegí otros archivos para cotizar.');
   }
@@ -533,6 +555,8 @@ $('formContacto').addEventListener('submit', async (e) => {
       return aviso('avisoContacto', detalle, ' Si sigue fallando, ', linkWhatsApp(), '.');
     }
     $('numeroPedido').textContent = cuerpo.numero;
+    estado.confirmada = true;
+    guardarSesion();
     mostrarPaso('pasoListo');
     window.scrollTo({ top: 0, behavior: 'smooth' });
     evento('generate_lead', { method: 'cotizador', value: estado.resultado.precio?.total_ars || 0, currency: 'ARS' });
@@ -553,6 +577,43 @@ zona.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' '
 zona.addEventListener('drop', (e) => agregarArchivos(e.dataTransfer.files));
 $('botonCotizar').addEventListener('click', cotizar);
 $('volverArchivos').addEventListener('click', () => mostrarPaso('pasoArchivos'));
+
+// Políticas en una ventana sobre la página: el cliente no pierde lo que estaba cotizando.
+document.querySelectorAll('a.cz-legal').forEach((a) => a.addEventListener('click', async (e) => {
+  e.preventDefault();
+  const dialogo = $('dialogoLegal');
+  try {
+    const r = await fetch(a.getAttribute('href'));
+    const doc = new DOMParser().parseFromString(await r.text(), 'text/html');
+    const contenido = doc.querySelector('.wrap');
+    contenido.querySelector('.back')?.remove();
+    $('contenidoLegal').replaceChildren(...[...contenido.childNodes].map((n) => document.importNode(n, true)));
+  } catch {
+    $('contenidoLegal').replaceChildren(el('p', {}, 'No pudimos cargar el texto. ',
+      el('a', { href: a.getAttribute('href'), target: '_blank', rel: 'noopener' }, 'Abrilo en otra pestaña'), '.'));
+  }
+  dialogo.showModal();
+  $('contenidoLegal').scrollTop = 0;
+}));
+$('cerrarLegal').addEventListener('click', () => $('dialogoLegal').close());
+$('dialogoLegal').addEventListener('click', (e) => { if (e.target === $('dialogoLegal')) $('dialogoLegal').close(); });
+
+// Si el cliente sale con una cotización abierta, el navegador le pregunta antes.
+window.addEventListener('beforeunload', (e) => {
+  if ((estado.archivos.length || estado.id) && !estado.confirmada) e.preventDefault();
+});
+
+// Si vuelve (atrás o recargando), se recupera la cotización: sigue guardada en el servidor una hora.
+const sesion = leerSesion();
+if (sesion?.id) {
+  document.querySelector(`input[name="aplicacion"][value="${CSS.escape(sesion.aplicacion || '')}"]`)?.click();
+  $('materialPreferido').value = sesion.material || '';
+  estado.id = sesion.id;
+  mostrarPaso('pasoArchivos', 'pasoEspera');
+  esperarResultado().then(() => {
+    if (estado.resultado) aviso('avisoArchivos', 'Recuperamos tu cotización anterior. Para sumar archivos, elegilos y volvé a cotizar.');
+  });
+}
 
 // Verificación anti-bots de Cloudflare: se activa poniendo data-sitekey en #turnstile.
 const sitekey = $('turnstile').dataset.sitekey;

@@ -60,6 +60,28 @@
 .cz-hecho .cz-num::after{content:'✓';font-size:.85rem;}
 .cz-tilde-chica{color:#4ade80;margin-right:8px;}
 
+/* Ventana con las políticas */
+.cz-dialogo{
+  width:min(760px, calc(100% - 32px));max-height:min(80vh, 900px);margin:auto;padding:0;
+  background:var(--bg-2);color:var(--text);border:1px solid var(--line);border-radius:14px;
+  box-shadow:0 20px 60px rgba(0,0,0,.6);
+}
+.cz-dialogo::backdrop{background:rgba(5,8,14,.7);}
+.cz-dialogo-cuerpo{padding:36px 36px 28px;overflow:auto;max-height:min(80vh, 900px);line-height:1.7;}
+.cz-dialogo-cuerpo h1{font-size:1.6rem;margin-bottom:18px;}
+.cz-dialogo-cuerpo h2{font-size:1.1rem;color:var(--blue);margin:24px 0 8px;}
+.cz-dialogo-cuerpo p,.cz-dialogo-cuerpo ul{color:var(--text-dim);margin-bottom:6px;}
+.cz-dialogo-cuerpo ul{padding-left:22px;}
+.cz-dialogo-cuerpo strong{color:var(--text);font-weight:500;}
+.cz-dialogo-cuerpo a{color:var(--blue);text-decoration:underline;}
+.cz-dialogo-cuerpo .updated{margin-top:28px;padding-top:14px;border-top:1px solid var(--line);font-size:.82rem;}
+.cz-cerrar{
+  position:sticky;top:12px;float:right;margin:12px 12px 0 0;z-index:1;
+  width:36px;height:36px;border-radius:50%;border:1px solid var(--line);
+  background:var(--surface);color:var(--text);cursor:pointer;font-size:1rem;
+}
+.cz-cerrar:hover{border-color:var(--blue);}
+
 /* Barra fija con el botón de cotizar: siempre a la vista mientras se arma el pedido */
 .cz-barra{
   position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:55;
