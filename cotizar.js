@@ -46,6 +46,7 @@ function mostrarPaso(...ids) {
   for (const id of ['pasoArchivos', 'pasoEspera', 'pasoResultado', 'pasoContacto', 'pasoListo', 'pasoManual']) {
     $(id).hidden = !ids.includes(id);
   }
+  if (estado) actualizarBarra();
 }
 
 function aviso(id, ...contenido) {
@@ -77,12 +78,15 @@ function agregarArchivos(lista) {
   } else {
     aviso('avisoArchivos');
   }
-  if (estado.archivos.length) evento('cotizador_archivos_elegidos', { cantidad: estado.archivos.length });
+  if (estado.archivos.length) {
+    evento('cotizador_archivos_elegidos', { cantidad: estado.archivos.length });
+    if (!estado.id) $('tituloUso').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
 }
 
 function dibujarLista() {
   $('listaArchivos').replaceChildren(...estado.archivos.map((f, i) => el('li', {},
-    el('span', { class: 'cz-nombre' }, f.name),
+    el('span', { class: 'cz-nombre' }, el('span', { class: 'cz-tilde-chica', 'aria-hidden': 'true' }, '✓'), f.name),
     el('span', { class: 'cz-peso' }, `${megas(f.size).toFixed(1)} MB`),
     el('button', { class: 'cz-quitar', type: 'button', 'aria-label': `Quitar ${f.name}`, onclick: () => {
       estado.archivos.splice(i, 1);
@@ -93,6 +97,16 @@ function dibujarLista() {
   const boton = $('botonCotizar');
   boton.disabled = estado.archivos.length === 0;
   boton.textContent = estado.id ? 'Volver a cotizar' : 'Cotizar';
+  $('tituloArchivos').classList.toggle('cz-hecho', estado.archivos.length > 0);
+  actualizarBarra();
+}
+
+function actualizarBarra() {
+  const n = estado.archivos.length;
+  // La barra acompaña mientras se eligen archivos y uso; con el resultado a la vista, el resumen tiene su botón.
+  $('barraCotizar').hidden = n === 0 || (!$('pasoResultado').hidden && !estado.archivosCambiados);
+  $('barraArchivos').textContent = `${n} ${n === 1 ? 'archivo' : 'archivos'}`;
+  $('barraUso').textContent = textoAplicacion();
 }
 
 function excedeLimites() {
@@ -393,6 +407,7 @@ function ajustar(demora = 500) {
 
 // Cambiar material o uso con una cotización abierta: se recalcula sin volver a subir.
 document.querySelectorAll('input[name="aplicacion"]').forEach((i) => i.addEventListener('change', () => {
+  actualizarBarra();
   if (estado.id && !estado.archivosCambiados && estado.resultado) ajustar(0);
 }));
 
