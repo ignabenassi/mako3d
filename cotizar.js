@@ -113,8 +113,13 @@ function derivarAManual(texto, motivo) {
   evento('cotizador_derivado_manual', { motivo });
 }
 
-const material = () => document.querySelector('input[name="material"]:checked').value;
-const uso = () => document.querySelector('input[name="uso"]:checked').value;
+const aplicacion = () => document.querySelector('input[name="aplicacion"]:checked').value;
+const textoAplicacion = () => document.querySelector('input[name="aplicacion"]:checked').closest('label').querySelector('strong').textContent;
+const materialPreferido = () => $('materialPreferido').value.trim();
+const HERRAMIENTAS = [
+  { nombre: 'Formware', url: 'https://www.formware.co/onlinestlrepair' },
+  { nombre: 'MeshLab', url: 'https://www.meshlab.net/' },
+];
 
 async function cotizar() {
   const exceso = excedeLimites();
@@ -122,14 +127,14 @@ async function cotizar() {
 
   const datos = new FormData();
   for (const f of estado.archivos) datos.append('archivos', f, f.name);
-  datos.append('material', material());
-  datos.append('uso', uso());
+  datos.append('aplicacion', aplicacion());
+  datos.append('material_preferido', materialPreferido());
   datos.append('turnstile', estado.turnstile);
 
   mostrarPaso('pasoArchivos', 'pasoEspera');
   $('pasoEspera').scrollIntoView({ behavior: 'smooth', block: 'center' });
   $('botonCotizar').disabled = true;
-  evento('cotizador_cotizar', { archivos: estado.archivos.length, material: material(), uso: uso() });
+  evento('cotizador_cotizar', { archivos: estado.archivos.length, aplicacion: aplicacion() });
 
   let r;
   try {
@@ -213,7 +218,6 @@ function tarjetaPieza(p) {
       ));
   }
   const [x, y, z] = p.medidas_mm;
-  const sugerencias = (p.sugerencias || []).filter((s) => !/orientación|otra unidad/.test(s));
   return el('article', { class: 'cz-pieza' },
     visor(p),
     el('div', {},
@@ -221,7 +225,7 @@ function tarjetaPieza(p) {
       el('p', { class: 'cz-medidas' }, el('b', {}, `${mm(x)} × ${mm(y)} × ${mm(z)} mm`),
         p.escala !== 1 ? ` · archivo en ${nombreUnidad(p.escala)}` : ''),
       p.escala_dudosa ? cajaEscala(p) : null,
-      sugerencias.length ? el('ul', { class: 'cz-sugerencias' }, sugerencias.map((s) => el('li', {}, s))) : null,
+      estadoArchivo(p),
       el('div', { class: 'cz-fila' }, selectorCantidad(p), precioPieza(p)),
     ));
 }
@@ -236,6 +240,18 @@ function quitarPieza(id) {
   }
   evento('cotizador_quitar_pieza');
   ajustar(0);
+}
+
+function estadoArchivo(p) {
+  if (p.estado_archivo === 'listo') return el('p', { class: 'cz-estado cz-ok' }, '✓ Archivo listo para imprimir');
+  const errores = p.estado_archivo === 'errores';
+  return el('div', { class: `cz-estado-caja ${errores ? 'cz-error' : 'cz-adv'}` },
+    el('p', { class: 'cz-estado-titulo' }, errores ? '⚠ Tu archivo tiene errores de malla' : '⚠ Revisá estos avisos'),
+    el('ul', {}, p.avisos_archivo.map((a) => el('li', {}, a.texto))),
+    errores ? el('p', {}, 'El precio es aproximado. Podés repararlo y volver a cotizar, o seguir: se imprime tal como lo enviaste. ',
+      'Herramientas gratuitas: ', ...HERRAMIENTAS.flatMap((h, i) => [i ? ' · ' : '',
+        el('a', { href: h.url, target: '_blank', rel: 'noopener noreferrer' }, h.nombre)])) : null,
+  );
 }
 
 function nombreUnidad(escala) {
@@ -305,7 +321,7 @@ function dibujarResumen() {
     el('dl', {},
       el('dt', {}, 'Piezas'), el('dd', {}, imprimibles.length),
       el('dt', {}, 'Unidades'), el('dd', {}, r.unidades),
-      el('dt', {}, 'Material'), el('dd', {}, material() === 'PA-CF' ? 'Técnico' : material()),
+      el('dt', {}, 'Uso'), el('dd', {}, textoAplicacion()),
     )];
 
   if (r.precio?.total_ars != null) {
@@ -319,6 +335,9 @@ function dibujarResumen() {
     hijos.push(el('div', { class: 'cz-total' }, el('span', {}, 'Total estimado'),
       r.precio.total_regular_ars > r.precio.total_ars ? el('s', { class: 'cz-regular' }, pesos.format(r.precio.total_regular_ars)) : null,
       el('strong', {}, pesos.format(r.precio.total_ars))));
+    if (r.precio.pedido_minimo_ars) {
+      hijos.push(el('p', { class: 'cz-nota' }, `Incluye el ajuste al pedido mínimo de ${pesos.format(r.precio.pedido_minimo_ars)}.`));
+    }
     if (r.precio.descuento_por_kilos > 0) {
       hijos.push(el('p', { class: 'cz-ahorro' }, `Incluye ${Math.round(r.precio.descuento_por_kilos * 100)}% de descuento por volumen.`));
     }
@@ -350,9 +369,9 @@ function ajustar(demora = 500) {
   $('resumen').classList.add('cz-cargando');
   temporizador = setTimeout(async () => {
     const cuerpo = {
-      uso: uso(),
+      aplicacion: aplicacion(),
       piezas: estado.resultado.piezas.filter((p) => !estado.quitadas.has(p.id))
-        .map((p) => ({ id: p.id, material: material(), ...estado.piezas[p.id] })),
+        .map((p) => ({ id: p.id, ...estado.piezas[p.id] })),
     };
     let r;
     try {
@@ -373,9 +392,13 @@ function ajustar(demora = 500) {
 }
 
 // Cambiar material o uso con una cotización abierta: se recalcula sin volver a subir.
-document.querySelectorAll('input[name="material"], input[name="uso"]').forEach((i) => i.addEventListener('change', () => {
+document.querySelectorAll('input[name="aplicacion"]').forEach((i) => i.addEventListener('change', () => {
   if (estado.id && !estado.archivosCambiados && estado.resultado) ajustar(0);
 }));
+
+$('materialPreferido').addEventListener('change', () => {
+  if (estado.id) { estado.archivosCambiados = true; dibujarLista(); }
+});
 
 // ---------- visor 3D ----------
 
@@ -465,6 +488,9 @@ async function dibujarModelo(caja, archivo) {
 // ---------- paso 3: contacto ----------
 
 function irAContacto() {
+  const conAvisos = estado.resultado.piezas.some((p) => p.imprimible && p.estado_archivo !== 'listo');
+  $('checkAvisos').hidden = !conAvisos;
+  $('formContacto').acepta_avisos.required = conAvisos;
   mostrarPaso('pasoArchivos', 'pasoResultado', 'pasoContacto');
   $('pasoContacto').scrollIntoView({ behavior: 'smooth', block: 'start' });
   evento('cotizador_formulario');
@@ -478,7 +504,8 @@ $('formContacto').addEventListener('submit', async (e) => {
     return;
   }
   const datos = Object.fromEntries(new FormData(form));
-  delete datos.acepto;
+  datos.acepta_condiciones = form.acepta_condiciones.checked;
+  datos.acepta_avisos = form.acepta_avisos.checked;
   const boton = form.querySelector('button[type="submit"]');
   boton.disabled = true;
   try {

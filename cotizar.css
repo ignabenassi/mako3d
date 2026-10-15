@@ -115,6 +115,24 @@
 .cz-precio small{display:block;color:var(--text-dim);font-size:.78rem;}
 .cz-precio s{color:var(--text-dim);}
 
+.cz-ayuda{margin:-6px 0 12px;font-size:.88rem;}
+.cz-campo-suelto{display:flex;flex-direction:column;gap:6px;margin-top:14px;font-size:.86rem;color:var(--text-dim);}
+.cz-campo-suelto input{
+  background:var(--bg-2);border:1px solid var(--line);border-radius:8px;padding:11px 12px;
+  color:var(--text);font-family:inherit;font-size:.95rem;
+}
+.cz-campo-suelto input:focus{outline:none;border-color:var(--blue);}
+.cz-estado{margin-top:10px;font-size:.84rem;}
+.cz-ok{color:#4ade80;}
+.cz-estado-caja{margin-top:12px;padding:12px 14px;border-radius:8px;font-size:.84rem;}
+.cz-estado-caja ul{margin:6px 0 6px 18px;color:var(--text-dim);}
+.cz-estado-caja p{color:var(--text-dim);}
+.cz-estado-caja a{text-decoration:underline;color:var(--text);}
+.cz-estado-titulo{color:var(--text) !important;font-weight:600;}
+.cz-adv{background:rgba(250,170,47,.08);border:1px solid rgba(250,170,47,.35);}
+.cz-error{background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.4);}
+.cz-check[hidden]{display:none;}
+
 /* Confirmar escala */
 .cz-escala{
   margin-top:12px;padding:12px 14px;border-radius:8px;font-size:.86rem;

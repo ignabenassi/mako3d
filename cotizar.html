@@ -72,33 +72,29 @@
 
       <ul class="cz-lista" id="listaArchivos"></ul>
 
-      <h2><span class="cz-num">2</span> Material</h2>
-      <div class="cz-opciones" id="opcionesMaterial">
+      <h2><span class="cz-num">2</span> ¿Para qué es la pieza?</h2>
+      <p class="cz-dim cz-ayuda">Con esto elegimos el material adecuado.</p>
+      <div class="cz-opciones" id="opcionesAplicacion">
         <label class="cz-opcion">
-          <input type="radio" name="material" value="PLA" checked>
-          <span><strong>PLA</strong><small>Para interiores: prototipos, maquetas, piezas decorativas y de uso general.</small></span>
+          <input type="radio" name="aplicacion" value="decorativa" checked>
+          <span><strong>Decorativa o de interior</strong><small>Prototipos, maquetas, carcasas, figuras y piezas de exhibición.</small></span>
         </label>
         <label class="cz-opcion">
-          <input type="radio" name="material" value="PETG">
-          <span><strong>PETG</strong><small>Más resistente al calor, la humedad y los golpes. Para piezas que van al sol o al exterior.</small></span>
+          <input type="radio" name="aplicacion" value="exterior">
+          <span><strong>Exterior, sol o humedad</strong><small>Piezas que van al aire libre, al sol o en ambientes húmedos.</small></span>
         </label>
         <label class="cz-opcion">
-          <input type="radio" name="material" value="PA-CF">
-          <span><strong>Técnico</strong><small>Nylon, ASA o fibra de carbono para exigencias mecánicas o térmicas. Lo cotizamos a medida.</small></span>
-        </label>
-      </div>
-
-      <h2><span class="cz-num">3</span> ¿Para qué es?</h2>
-      <div class="cz-opciones" id="opcionesUso">
-        <label class="cz-opcion">
-          <input type="radio" name="uso" value="general" checked>
-          <span><strong>Uso general o decorativo</strong><small>Prototipos, maquetas, carcasas, soportes livianos, piezas de exhibición.</small></span>
+          <input type="radio" name="aplicacion" value="calor">
+          <span><strong>Soporta calor</strong><small>Más de 60 °C: interior de autos, cerca de motores o fuentes de calor. Lo cotizamos a medida.</small></span>
         </label>
         <label class="cz-opcion">
-          <input type="radio" name="uso" value="funcional">
-          <span><strong>Pieza funcional</strong><small>Va a soportar carga, temperatura o encastrar con otra pieza. Revisamos el diseño y te confirmamos.</small></span>
+          <input type="radio" name="aplicacion" value="esfuerzo">
+          <span><strong>Soporta esfuerzo o encastra</strong><small>Piezas que cargan peso, trabajan o encastran con otras. Revisamos el diseño y te confirmamos.</small></span>
         </label>
       </div>
+      <label class="cz-campo-suelto">¿Necesitás un material en particular? <small>(opcional, lo confirmamos a mano)</small>
+        <input id="materialPreferido" maxlength="200" placeholder="Por ejemplo: PETG negro, nylon con fibra de carbono…">
+      </label>
 
       <div class="cz-turnstile" id="turnstile"></div>
       <div class="cz-aviso" id="avisoArchivos" hidden></div>
@@ -138,7 +134,8 @@
         <label>Empresa <small>(opcional)</small><input name="empresa" maxlength="100" autocomplete="organization"></label>
         <label class="cz-ancho">Comentarios <small>(opcional)</small><textarea name="comentario" rows="3" maxlength="2000" placeholder="Color, fecha en que lo necesitás, detalles de uso…"></textarea></label>
       </div>
-      <label class="cz-check"><input type="checkbox" name="acepto" required> Acepto la <a href="politica-de-privacidad.html" target="_blank">política de privacidad</a>.</label>
+      <label class="cz-check"><input type="checkbox" name="acepta_condiciones" required> Acepto las <a href="condiciones-del-servicio.html" target="_blank">condiciones del servicio</a> y la <a href="politica-de-privacidad.html" target="_blank">política de privacidad</a>.</label>
+      <label class="cz-check" id="checkAvisos" hidden><input type="checkbox" name="acepta_avisos"> Leí los avisos sobre mis archivos y acepto que se impriman tal como los envié.</label>
       <div class="cz-aviso" id="avisoContacto" hidden></div>
       <button class="btn-primary cz-boton" type="submit">Enviar pedido</button>
     </form>
