@@ -579,7 +579,10 @@ $('botonCotizar').addEventListener('click', cotizar);
 $('volverArchivos').addEventListener('click', () => mostrarPaso('pasoArchivos'));
 
 // Políticas en una ventana sobre la página: el cliente no pierde lo que estaba cotizando.
-document.querySelectorAll('a.cz-legal').forEach((a) => a.addEventListener('click', async (e) => {
+const LEGALES = 'a[href$="politica-de-privacidad.html"], a[href$="condiciones-del-servicio.html"]';
+document.addEventListener('click', async (e) => {
+  const a = e.target.closest(LEGALES);
+  if (!a) return;
   e.preventDefault();
   const dialogo = $('dialogoLegal');
   try {
@@ -587,14 +590,18 @@ document.querySelectorAll('a.cz-legal').forEach((a) => a.addEventListener('click
     const doc = new DOMParser().parseFromString(await r.text(), 'text/html');
     const contenido = doc.querySelector('.wrap');
     contenido.querySelector('.back')?.remove();
+    // Los demás links (email, WhatsApp) se abren aparte para no salir del cotizador.
+    contenido.querySelectorAll('a').forEach((link) => {
+      if (!link.matches(LEGALES)) { link.target = '_blank'; link.rel = 'noopener noreferrer'; }
+    });
     $('contenidoLegal').replaceChildren(...[...contenido.childNodes].map((n) => document.importNode(n, true)));
   } catch {
     $('contenidoLegal').replaceChildren(el('p', {}, 'No pudimos cargar el texto. ',
       el('a', { href: a.getAttribute('href'), target: '_blank', rel: 'noopener' }, 'Abrilo en otra pestaña'), '.'));
   }
-  dialogo.showModal();
+  if (!dialogo.open) dialogo.showModal();
   $('contenidoLegal').scrollTop = 0;
-}));
+});
 $('cerrarLegal').addEventListener('click', () => $('dialogoLegal').close());
 $('dialogoLegal').addEventListener('click', (e) => { if (e.target === $('dialogoLegal')) $('dialogoLegal').close(); });
 
