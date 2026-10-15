@@ -198,6 +198,8 @@
 .cz-total span{color:var(--text-dim);font-size:.85rem;}
 .cz-total strong{display:block;font-family:'JetBrains Mono',monospace;font-size:1.9rem;font-weight:500;color:var(--text);}
 .cz-ahorro{color:#4ade80;font-size:.85rem;}
+.cz-minimo{display:grid;grid-template-columns:1fr auto;gap:4px 12px;font-size:.86rem;color:var(--text-dim);margin-top:14px;}
+.cz-minimo dd{text-align:right;color:var(--text);font-family:'JetBrains Mono',monospace;}
 .cz-promo{
   margin-bottom:14px;padding:10px 12px;border-radius:8px;font-size:.84rem;color:var(--text-dim);
   background:rgba(47,125,250,.1);border:1px solid rgba(47,125,250,.35);

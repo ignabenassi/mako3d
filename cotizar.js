@@ -368,11 +368,20 @@ function dibujarResumen() {
         el('strong', {}, `${promo.texto}: ${Math.round(promo.descuento * 100)}% de descuento`),
         ` hasta el ${d}/${m}/${a}.`));
     }
+    const minimo = r.precio.pedido_minimo;
+    if (minimo) {
+      // Precio real de las piezas, el ajuste y cómo evitarlo: el cliente ve exactamente qué paga.
+      hijos.push(el('dl', { class: 'cz-minimo' },
+        el('dt', {}, 'Tus piezas'), el('dd', {}, pesos.format(minimo.subtotal_real_ars)),
+        el('dt', {}, 'Ajuste al pedido mínimo'), el('dd', {}, pesos.format(minimo.ajuste_ars)),
+      ));
+    }
     hijos.push(el('div', { class: 'cz-total' }, el('span', {}, 'Total estimado'),
-      r.precio.total_regular_ars > r.precio.total_ars ? el('s', { class: 'cz-regular' }, pesos.format(r.precio.total_regular_ars)) : null,
+      !minimo && r.precio.total_regular_ars > r.precio.total_ars ? el('s', { class: 'cz-regular' }, pesos.format(r.precio.total_regular_ars)) : null,
       el('strong', {}, pesos.format(r.precio.total_ars))));
-    if (r.precio.pedido_minimo_ars) {
-      hijos.push(el('p', { class: 'cz-nota' }, `Incluye el ajuste al pedido mínimo de ${pesos.format(r.precio.pedido_minimo_ars)}.`));
+    if (minimo) {
+      hijos.push(el('p', { class: 'cz-aviso' }, `El pedido mínimo es de ${pesos.format(minimo.minimo_ars)}. `,
+        `Con ${minimo.sugerencia.unidades_totales} unidades de ${minimo.sugerencia.archivo} llegás al mínimo sin ajuste.`));
     }
     if (r.precio.descuento_por_kilos > 0) {
       hijos.push(el('p', { class: 'cz-ahorro' }, `Incluye ${Math.round(r.precio.descuento_por_kilos * 100)}% de descuento por volumen.`));
