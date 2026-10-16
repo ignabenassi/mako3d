@@ -401,6 +401,17 @@ function dibujarResumen() {
       el('dt', {}, 'Uso'), el('dd', {}, textoAplicacion()),
     )];
 
+  const manual = !r.precio_automatico;
+  if (manual) {
+    // Antes del precio: por qué este pedido lo mira una persona.
+    hijos.push(el('div', { class: 'cz-revision' },
+      el('p', { class: 'cz-revision-titulo' }, 'Este pedido lo revisamos a mano'),
+      el('ul', {}, r.motivos_cotizacion_manual.map((m) => el('li', {}, m))),
+      el('p', {}, r.precio?.total_ars != null
+        ? 'El precio de abajo es nuestro cálculo con tus archivos. Te confirmamos el valor final, el plazo y la entrega antes de imprimir.'
+        : 'Te pasamos el precio después de revisarlo.')));
+  }
+
   if (r.precio?.total_ars != null) {
     const promo = r.precio.promocion;
     if (promo) {
@@ -417,7 +428,7 @@ function dibujarResumen() {
         el('dt', {}, 'Ajuste al pedido mínimo'), el('dd', {}, pesos.format(minimo.ajuste_ars)),
       ));
     }
-    hijos.push(el('div', { class: 'cz-total' }, el('span', {}, 'Total estimado'),
+    hijos.push(el('div', { class: 'cz-total' }, el('span', {}, manual ? 'Precio estimado' : 'Total estimado'),
       !minimo && r.precio.total_regular_ars > r.precio.total_ars ? el('s', { class: 'cz-regular' }, pesos.format(r.precio.total_regular_ars)) : null,
       el('strong', {}, pesos.format(r.precio.total_ars))));
     if (minimo) {
@@ -427,17 +438,12 @@ function dibujarResumen() {
     if (r.precio.descuento_por_kilos > 0) {
       hijos.push(el('p', { class: 'cz-ahorro' }, `Incluye ${Math.round(r.precio.descuento_por_kilos * 100)}% de descuento por volumen.`));
     }
-    if (r.precio.ahorro_ars > 0) {
+    if (!manual && r.precio.ahorro_ars > 0) {
       hijos.push(el('p', { class: 'cz-ahorro' }, `Ahorrás ${pesos.format(r.precio.ahorro_ars)} frente a pedir cada pieza por separado.`));
     }
-    hijos.push(el('p', { class: 'cz-nota' }, 'Precio en pesos argentinos. Te confirmamos plazo y entrega al recibir el pedido.'));
-  } else if (r.precio?.rango_estimado_ars) {
-    const [a, b] = r.precio.rango_estimado_ars;
-    hijos.push(el('div', { class: 'cz-total' }, el('span', {}, 'Precio estimado'), el('strong', {}, `${pesos.format(a)} – ${pesos.format(b)}`)));
-  }
-  if (!r.precio_automatico) {
-    hijos.push(el('p', { class: 'cz-nota' }, 'Este pedido lo revisamos antes de confirmarte el precio:'),
-      el('ul', { class: 'cz-motivos' }, r.motivos_cotizacion_manual.map((m) => el('li', {}, m))));
+    hijos.push(el('p', { class: 'cz-nota' }, manual
+      ? 'Precio en pesos argentinos.'
+      : 'Precio en pesos argentinos. Te confirmamos plazo y entrega al recibir el pedido.'));
   }
   if (pendientes) hijos.push(el('p', { class: 'cz-aviso' }, 'Confirmá las medidas de las piezas marcadas para continuar.'));
   if (imprimibles.length) {
