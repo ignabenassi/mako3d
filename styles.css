@@ -261,7 +261,7 @@
   .contact-box p{color:var(--text-dim);margin-top:12px;max-width:420px;}
   .contact-actions{display:flex;gap:14px;flex-wrap:wrap;}
 
-  footer{border-top:1px solid var(--line);padding:40px 0;}
+  footer{border-top:1px solid var(--line);padding:40px 0 96px;} /* abajo: lugar para los botones flotantes */
   .foot-row{display:flex;justify-content:space-between;align-items:center;color:var(--text-dim);font-size:.85rem;flex-wrap:wrap;gap:16px;}
   .foot-social{display:flex;gap:18px;}
 

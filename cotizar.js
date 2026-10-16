@@ -398,8 +398,8 @@ function dibujarResumen() {
     el('dl', {},
       el('dt', {}, 'Piezas'), el('dd', {}, imprimibles.length),
       el('dt', {}, 'Unidades'), el('dd', {}, r.unidades),
-      el('dt', {}, 'Uso'), el('dd', {}, textoAplicacion()),
-      el('dt', {}, 'Material'), el('dd', {}, materialElegido()
+      el('dt', {}, 'Uso'), el('dd', { class: 'cz-dd-texto' }, textoAplicacion()),
+      el('dt', {}, 'Material'), el('dd', { class: 'cz-dd-texto' }, materialElegido()
         ? $('materialElegido').selectedOptions[0].textContent
         : [...new Set(imprimibles.map((p) => p.material))].join(', ') || '—'),
     )];
@@ -547,7 +547,8 @@ async function dibujarModelo(caja, archivo) {
   } else {
     objeto = new OBJLoader().parse(await archivo.text());
   }
-  objeto.traverse?.((o) => { if (o.isMesh) o.material = material; });
+  // Algunos programas exportan las normales en cero y la pieza se vería negra: se recalculan.
+  objeto.traverse?.((o) => { if (o.isMesh) { o.material = material; o.geometry.computeVertexNormals(); } });
 
   const escena = new THREE.Scene();
   escena.add(new THREE.HemisphereLight(0xffffff, 0x1a2338, 2.2));
