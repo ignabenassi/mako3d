@@ -33,7 +33,7 @@ const CLAVE_SESION = 'mako_cotizacion';
 function guardarSesion() {
   try {
     if (estado.id && !estado.confirmada) {
-      sessionStorage.setItem(CLAVE_SESION, JSON.stringify({ id: estado.id, aplicacion: aplicacion(), material: materialPreferido() }));
+      sessionStorage.setItem(CLAVE_SESION, JSON.stringify({ id: estado.id, aplicacion: aplicacion(), material: materialElegido() }));
     } else {
       sessionStorage.removeItem(CLAVE_SESION);
     }
@@ -163,7 +163,7 @@ function derivarAManual(texto, motivo) {
 
 const aplicacion = () => document.querySelector('input[name="aplicacion"]:checked').value;
 const textoAplicacion = () => document.querySelector('input[name="aplicacion"]:checked').closest('label').querySelector('strong').textContent;
-const materialPreferido = () => $('materialPreferido').value.trim();
+const materialElegido = () => $('materialElegido').value;
 const HERRAMIENTAS = [
   { nombre: 'Formware', url: 'https://www.formware.co/onlinestlrepair' },
   { nombre: 'MeshLab', url: 'https://www.meshlab.net/' },
@@ -176,7 +176,7 @@ async function cotizar() {
   const datos = new FormData();
   for (const f of estado.archivos) datos.append('archivos', f, f.name);
   datos.append('aplicacion', aplicacion());
-  datos.append('material_preferido', materialPreferido());
+  datos.append('material_elegido', materialElegido());
   datos.append('turnstile', estado.turnstile);
   renovarTurnstile();
 
@@ -399,6 +399,9 @@ function dibujarResumen() {
       el('dt', {}, 'Piezas'), el('dd', {}, imprimibles.length),
       el('dt', {}, 'Unidades'), el('dd', {}, r.unidades),
       el('dt', {}, 'Uso'), el('dd', {}, textoAplicacion()),
+      el('dt', {}, 'Material'), el('dd', {}, materialElegido()
+        ? $('materialElegido').selectedOptions[0].textContent
+        : [...new Set(imprimibles.map((p) => p.material))].join(', ') || '—'),
     )];
 
   const manual = !r.precio_automatico;
@@ -467,6 +470,7 @@ function ajustar(demora = 500) {
     const numero = ++ultimoAjuste;
     const cuerpo = {
       aplicacion: aplicacion(),
+      material_elegido: materialElegido(),
       piezas: estado.resultado.piezas.filter((p) => !estado.quitadas.has(p.id))
         .map((p) => ({ id: p.id, ...estado.piezas[p.id] })),
     };
@@ -497,8 +501,9 @@ document.querySelectorAll('input[name="aplicacion"]').forEach((i) => i.addEventL
   if (estado.id && !estado.archivosCambiados && estado.resultado) ajustar(0);
 }));
 
-$('materialPreferido').addEventListener('change', () => {
-  if (estado.id) { estado.archivosCambiados = true; dibujarLista(); }
+// Cambiar el material también se recalcula sin volver a subir.
+$('materialElegido').addEventListener('change', () => {
+  if (estado.id && !estado.archivosCambiados && estado.resultado) ajustar(0);
 });
 
 // ---------- visor 3D ----------
@@ -678,7 +683,8 @@ window.addEventListener('beforeunload', (e) => {
 const sesion = leerSesion();
 if (sesion?.id) {
   document.querySelector(`input[name="aplicacion"][value="${CSS.escape(sesion.aplicacion || '')}"]`)?.click();
-  $('materialPreferido').value = sesion.material || '';
+  $('materialElegido').value = sesion.material || '';
+  if ($('materialElegido').selectedIndex < 0) $('materialElegido').value = '';
   estado.id = sesion.id;
   mostrarPaso('pasoArchivos', 'pasoEspera');
   esperarResultado().then(() => {

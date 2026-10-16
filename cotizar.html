@@ -21,13 +21,13 @@
 <link rel="apple-touch-icon" sizes="180x180" href="img/favicon-180.png">
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-FCPJY449ZR"></script>
-<script src="cotizar-analytics.js?v=13"></script>
+<script src="cotizar-analytics.js?v=14"></script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css?v=2">
-<link rel="stylesheet" href="cotizar.css?v=13">
+<link rel="stylesheet" href="cotizar.css?v=14">
 </head>
 <body>
 <div class="scroll-progress" id="scrollProgress"></div>
@@ -78,7 +78,7 @@
       <div class="cz-opciones" id="opcionesAplicacion">
         <label class="cz-opcion">
           <input type="radio" name="aplicacion" value="decorativa" checked>
-          <span><strong>Decorativa o de interior</strong><small>Prototipos, maquetas, carcasas, figuras y piezas de exhibición.</small></span>
+          <span><strong>Uso general o prototipo</strong><small>Carcasas, soportes livianos, prototipos, encastres simples y piezas decorativas.</small></span>
         </label>
         <label class="cz-opcion">
           <input type="radio" name="aplicacion" value="exterior">
@@ -94,12 +94,26 @@
         </label>
         <label class="cz-opcion">
           <input type="radio" name="aplicacion" value="esfuerzo">
-          <span><strong>Soporta esfuerzo o encastra</strong><small>Piezas que cargan peso, trabajan o encastran con otras. Revisamos el diseño y te confirmamos.</small></span>
+          <span><strong>Soporta esfuerzo</strong><small>Piezas que cargan peso o trabajan mecánicamente: engranajes, soportes estructurales. Revisamos el diseño y te confirmamos.</small></span>
         </label>
       </div>
-      <label class="cz-campo-suelto">¿Necesitás un material en particular? <small>(opcional, lo confirmamos a mano)</small>
-        <input id="materialPreferido" maxlength="200" placeholder="Por ejemplo: PETG negro, TPU flexible, nylon con fibra de carbono…">
+      <label class="cz-campo-suelto">¿Querés un material en particular? <small>(opcional)</small>
+        <select id="materialElegido">
+          <option value="">Que lo elija Mako según el uso (recomendado)</option>
+          <optgroup label="Con precio al instante">
+            <option value="PLA">PLA</option>
+            <option value="PETG">PETG</option>
+            <option value="ABS">ABS</option>
+            <option value="ASA">ASA (resiste UV)</option>
+          </optgroup>
+          <optgroup label="Precio a confirmar">
+            <option value="TPU">TPU flexible</option>
+            <option value="PETG-CF">PETG con fibra de carbono</option>
+            <option value="PA-CF">Nylon con fibra de carbono</option>
+          </optgroup>
+        </select>
       </label>
+      <p class="cz-dim cz-nota-material">¿Necesitás otro material o un color en particular? <a href="https://wa.me/5491158067003?text=Hola%2C%20quiero%20cotizar%20una%20pieza%20en%20un%20material%20que%20no%20est%C3%A1%20en%20el%20cotizador." target="_blank" rel="noopener noreferrer" class="cz-subrayado">Escribinos</a> o contalo en el comentario del pedido.</p>
 
       <div class="cz-turnstile" id="turnstile" data-sitekey="0x4AAAAAAFYitWKRUy9hrANw"></div>
       <div class="cz-aviso" id="avisoArchivos" hidden></div>
@@ -209,6 +223,6 @@
 </dialog>
 
 <script src="script.js" defer></script>
-<script type="module" src="cotizar.js?v=13"></script>
+<script type="module" src="cotizar.js?v=14"></script>
 </body>
 </html>
