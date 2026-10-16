@@ -649,7 +649,7 @@ $('botonCotizar').addEventListener('click', cotizar);
 $('volverArchivos').addEventListener('click', () => mostrarPaso('pasoArchivos'));
 
 // Políticas en una ventana sobre la página: el cliente no pierde lo que estaba cotizando.
-const LEGALES = 'a[href$="politica-de-privacidad.html"], a[href$="condiciones-del-servicio.html"]';
+const LEGALES = 'a[href$="politica-de-privacidad"], a[href$="condiciones-del-servicio"]';
 document.addEventListener('click', async (e) => {
   const a = e.target.closest(LEGALES);
   if (!a) return;

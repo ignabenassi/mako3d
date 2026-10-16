@@ -7,17 +7,17 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.mako3d.com.ar/cotizar.html</loc>
+    <loc>https://www.mako3d.com.ar/cotizar</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.mako3d.com.ar/condiciones-del-servicio.html</loc>
+    <loc>https://www.mako3d.com.ar/condiciones-del-servicio</loc>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
-    <loc>https://www.mako3d.com.ar/politica-de-privacidad.html</loc>
+    <loc>https://www.mako3d.com.ar/politica-de-privacidad</loc>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
