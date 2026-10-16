@@ -230,7 +230,9 @@ function mostrarEspera(cuerpo, segundos) {
       : DETALLE_ESPERA;
 }
 
-async function esperarResultado() {
+// ajuste: número del ajuste que se espera. Si mientras tanto hubo otro cambio, este resultado
+// ya está viejo y no se dibuja (pisaría lo que la persona acaba de tocar).
+async function esperarResultado(ajuste = 0) {
   const inicio = Date.now();
   while (Date.now() - inicio < 10 * 60 * 1000) {
     let r;
@@ -246,7 +248,10 @@ async function esperarResultado() {
       mostrarPaso('pasoArchivos');
       return aviso('avisoArchivos', cuerpo.detail || 'La cotización venció. Volvé a cotizar.');
     }
-    if (cuerpo.estado === 'lista') return mostrarResultado(cuerpo.resultado);
+    if (cuerpo.estado === 'lista') {
+      if (ajuste && (ajuste !== ultimoAjuste || cambiosSinEnviar)) return;
+      return mostrarResultado(cuerpo.resultado, ajuste > 0);
+    }
     if (cuerpo.estado === 'error') return derivarAManual(cuerpo.error, 'error_analisis');
     mostrarEspera(cuerpo, (Date.now() - inicio) / 1000);
     await new Promise((ok) => setTimeout(ok, 700));
@@ -256,17 +261,20 @@ async function esperarResultado() {
 
 // ---------- paso 2: resultado ----------
 
-function mostrarResultado(resultado) {
+function mostrarResultado(resultado, esAjuste = false) {
   estado.resultado = resultado;
   guardarSesion();
+  // En un ajuste manda lo elegido en la página; el servidor solo completa piezas nuevas.
   for (const p of resultado.piezas) {
-    estado.piezas[p.id] = { cantidad: p.cantidad, escala: p.escala_dudosa ? null : p.escala };
+    if (!esAjuste || !estado.piezas[p.id]) {
+      estado.piezas[p.id] = { cantidad: p.cantidad, escala: p.escala_dudosa ? null : p.escala };
+    }
   }
   $('piezas').replaceChildren(...resultado.piezas.map(tarjetaPieza));
   dibujarResumen();
   $('resumen').classList.remove('cz-cargando');
   mostrarPaso('pasoArchivos', 'pasoResultado');
-  $('pasoResultado').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  if (!esAjuste) $('pasoResultado').scrollIntoView({ behavior: 'smooth', block: 'start' });
   dibujarLista();
   evento('cotizador_precio_mostrado', {
     automatico: resultado.precio_automatico,
@@ -442,10 +450,15 @@ function dibujarResumen() {
 }
 
 let temporizador = null;
+let cambiosSinEnviar = false;  // hay un cambio esperando la demora antes de mandarse
+let ultimoAjuste = 0;          // número del último ajuste mandado
 function ajustar(demora = 500) {
   clearTimeout(temporizador);
+  cambiosSinEnviar = true;
   $('resumen').classList.add('cz-cargando');
   temporizador = setTimeout(async () => {
+    cambiosSinEnviar = false;
+    const numero = ++ultimoAjuste;
     const cuerpo = {
       aplicacion: aplicacion(),
       piezas: estado.resultado.piezas.filter((p) => !estado.quitadas.has(p.id))
@@ -459,13 +472,16 @@ function ajustar(demora = 500) {
     } catch {
       return sinServicio();
     }
-    if (r.status === 409) return ajustar(800);  // todavía calculando el cambio anterior
+    if (r.status === 409) {  // todavía calculando el cambio anterior: se reintenta si no hubo otro
+      if (numero === ultimoAjuste && !cambiosSinEnviar) ajustar(800);
+      return;
+    }
     if (!r.ok) {
       const e = await r.json().catch(() => ({}));
       $('resumen').classList.remove('cz-cargando');
       return aviso('avisoArchivos', typeof e.detail === 'string' ? e.detail : 'No pudimos aplicar el cambio.');
     }
-    await esperarResultado();
+    await esperarResultado(numero);
   }, demora);
 }
 
