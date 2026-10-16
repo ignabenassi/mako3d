@@ -81,6 +81,19 @@ function linkWhatsApp(texto = 'escribinos por WhatsApp') {
 const extension = (nombre) => nombre.slice(nombre.lastIndexOf('.')).toLowerCase();
 const megas = (bytes) => bytes / (1024 * 1024);
 
+// ---------- verificación anti-bots ----------
+
+function turnstileActivo() {
+  return Boolean($('turnstile').dataset.sitekey) && !['localhost', '127.0.0.1'].includes(location.hostname);
+}
+
+// Cada verificación sirve para un solo envío: se descarta y Turnstile genera otra.
+function renovarTurnstile() {
+  if (!turnstileActivo()) return;
+  estado.turnstile = '';
+  if (widgetTurnstile !== null && window.turnstile) window.turnstile.reset(widgetTurnstile);
+}
+
 // ---------- paso 1: archivos ----------
 
 function agregarArchivos(lista) {
@@ -114,7 +127,7 @@ function dibujarLista() {
     } }, '✕'),
   )));
   const boton = $('botonCotizar');
-  boton.disabled = estado.archivos.length === 0;
+  boton.disabled = estado.archivos.length === 0 || (turnstileActivo() && !estado.turnstile);
   boton.textContent = estado.id ? 'Volver a cotizar' : 'Cotizar';
   $('tituloArchivos').classList.toggle('cz-hecho', estado.archivos.length > 0);
   actualizarBarra();
@@ -163,6 +176,7 @@ async function cotizar() {
   datos.append('aplicacion', aplicacion());
   datos.append('material_preferido', materialPreferido());
   datos.append('turnstile', estado.turnstile);
+  renovarTurnstile();
 
   mostrarPaso('pasoArchivos', 'pasoEspera');
   $('pasoEspera').scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -632,10 +646,16 @@ if (sesion?.id) {
 }
 
 // Verificación anti-bots de Cloudflare: se activa poniendo data-sitekey en #turnstile.
-const sitekey = $('turnstile').dataset.sitekey;
-if (sitekey) {
-  window.turnstileListo = () => window.turnstile.render('#turnstile', {
-    sitekey, callback: (token) => { estado.turnstile = token; },
-  });
+// En la PC de desarrollo no se usa: la clave solo vale para mako3d.com.ar y la API local no la pide.
+let widgetTurnstile = null;
+if (turnstileActivo()) {
+  window.turnstileListo = () => {
+    widgetTurnstile = window.turnstile.render('#turnstile', {
+      sitekey: $('turnstile').dataset.sitekey,
+      callback: (token) => { estado.turnstile = token; dibujarLista(); },
+      'expired-callback': () => { estado.turnstile = ''; dibujarLista(); },
+      'error-callback': () => { estado.turnstile = ''; dibujarLista(); },
+    });
+  };
   document.head.append(el('script', { src: 'https://challenges.cloudflare.com/turnstile/v0/api.js?onload=turnstileListo&render=explicit', async: true }));
 }
