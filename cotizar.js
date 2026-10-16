@@ -138,7 +138,9 @@ function actualizarBarra() {
   // La barra acompaña mientras se eligen archivos y uso; con el resultado a la vista, el resumen tiene su botón.
   $('barraCotizar').hidden = n === 0 || (!$('pasoResultado').hidden && !estado.archivosCambiados);
   $('barraArchivos').textContent = `${n} ${n === 1 ? 'archivo' : 'archivos'}`;
-  $('barraUso').textContent = textoAplicacion();
+  $('barraUso').textContent = turnstileActivo() && !estado.turnstile && n > 0
+    ? 'Verificando que seas una persona…'
+    : textoAplicacion();
 }
 
 function excedeLimites() {
@@ -671,7 +673,13 @@ if (turnstileActivo()) {
       sitekey: $('turnstile').dataset.sitekey,
       callback: (token) => { estado.turnstile = token; dibujarLista(); },
       'expired-callback': () => { estado.turnstile = ''; dibujarLista(); },
-      'error-callback': () => { estado.turnstile = ''; dibujarLista(); },
+      'error-callback': () => {
+        estado.turnstile = '';
+        dibujarLista();
+        aviso('avisoArchivos', 'No pudimos verificar que seas una persona. Recargá la página o ',
+          linkWhatsApp('escribinos por WhatsApp'), '.');
+        evento('cotizador_turnstile_error');
+      },
     });
   };
   document.head.append(el('script', { src: 'https://challenges.cloudflare.com/turnstile/v0/api.js?onload=turnstileListo&render=explicit', async: true }));
