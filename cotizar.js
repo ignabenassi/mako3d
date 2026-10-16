@@ -178,6 +178,7 @@ async function cotizar() {
   datos.append('turnstile', estado.turnstile);
   renovarTurnstile();
 
+  mostrarEspera({ estado: 'procesando' }, 0);
   mostrarPaso('pasoArchivos', 'pasoEspera');
   $('pasoEspera').scrollIntoView({ behavior: 'smooth', block: 'center' });
   $('botonCotizar').disabled = true;
@@ -212,9 +213,24 @@ function sinServicio() {
   evento('cotizador_sin_servicio');
 }
 
+const DETALLE_ESPERA = 'Revisamos cada archivo, lo orientamos y calculamos material y horas de máquina. Suele tardar unos segundos.';
+
+// Mientras espera, el cliente sabe si está en fila o si su pieza se está calculando.
+function mostrarEspera(cuerpo, segundos) {
+  const antes = cuerpo.estado === 'en_cola' ? cuerpo.antes_en_fila || 0 : 0;
+  $('textoEspera').textContent = antes > 0
+    ? `Hay ${antes} ${antes === 1 ? 'cotización' : 'cotizaciones'} antes que la tuya`
+    : 'Analizando tus piezas…';
+  $('detalleEspera').textContent = antes > 0
+    ? 'Hay varias personas cotizando en este momento, así que puede tardar un poco más de lo normal. No cierres la página.'
+    : segundos > 30
+      ? 'Las piezas grandes pueden tardar hasta dos minutos. Ya falta poco.'
+      : DETALLE_ESPERA;
+}
+
 async function esperarResultado() {
   const inicio = Date.now();
-  while (Date.now() - inicio < 5 * 60 * 1000) {
+  while (Date.now() - inicio < 10 * 60 * 1000) {
     let r;
     try {
       r = await fetch(`${API}/api/cotizaciones/${encodeURIComponent(estado.id)}`);
@@ -230,6 +246,7 @@ async function esperarResultado() {
     }
     if (cuerpo.estado === 'lista') return mostrarResultado(cuerpo.resultado);
     if (cuerpo.estado === 'error') return derivarAManual(cuerpo.error, 'error_analisis');
+    mostrarEspera(cuerpo, (Date.now() - inicio) / 1000);
     await new Promise((ok) => setTimeout(ok, 700));
   }
   derivarAManual('El análisis está tardando más de lo normal.', 'demora');
