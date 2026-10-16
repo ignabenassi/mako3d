@@ -107,6 +107,7 @@
   .hero h1 em{font-style:normal;color:var(--blue);}
   .hero p{color:var(--text-dim);max-width:560px;font-size:1.05rem;margin-bottom:36px;}
   .hero-actions{display:flex;gap:16px;}
+  .btn-primary,.btn-outline{display:inline-flex;align-items:center;justify-content:center;text-align:center;}
   .btn-outline{
     border:1px solid var(--line);padding:13px 24px;border-radius:6px;font-size:.92rem;
     color:var(--text);transition:border-color .2s;
@@ -323,8 +324,7 @@
     .about-stats{grid-template-columns:1fr;}
 
     .contact-box{padding:26px;flex-direction:column;align-items:flex-start;}
-    .contact-actions{width:100%;}
-    .contact-actions a{flex:1;text-align:center;}
+    .contact-actions{width:100%;flex-direction:column;align-items:stretch;}
 
     .foot-row{flex-direction:column;align-items:flex-start;}
   }
