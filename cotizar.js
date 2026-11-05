@@ -5,7 +5,7 @@
 const API = ['localhost', '127.0.0.1'].includes(location.hostname)
   ? 'http://127.0.0.1:8000'
   : 'https://cotizar-api.mako3d.com.ar';
-const LIMITES = { mbArchivo: 50, mbTotal: 95, archivos: 15, cantidad: 500 };
+const LIMITES = { mbArchivo: 50, mbTotal: 95, archivos: 15, cantidad: 50 };
 const EXTENSIONES = ['.stl', '.3mf', '.obj', '.zip'];
 const WHATSAPP = 'https://wa.me/5491158067003?text=' +
   encodeURIComponent('Hola, vengo del cotizador online de Mako 3D y quiero cotizar una pieza.');
