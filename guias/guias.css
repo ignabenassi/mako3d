@@ -79,6 +79,8 @@ p,li{text-wrap:pretty;}
 
 .figure{margin:22px 0;border-radius:18px;overflow:hidden;background:var(--white);border:1px solid var(--line);}
 .figure img{width:100%;aspect-ratio:16/9;object-fit:cover;}
+.figure-vertical{max-width:380px;margin-left:auto;margin-right:auto;}
+.figure-vertical img{aspect-ratio:4/5;height:auto;}
 .figure figcaption{padding:12px 16px;font-size:.88rem;color:var(--dim);}
 
 /* tarjetas de material / opciones */
@@ -121,7 +123,7 @@ p,li{text-wrap:pretty;}
 .guide-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
 .guide{background:var(--white);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:transform .25s, box-shadow .25s;}
 .guide:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(11,44,95,.10);}
-.guide img{width:100%;aspect-ratio:16/10;object-fit:cover;}
+.guide img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:center 45%;}
 .guide .g-body{padding:18px 20px 22px;display:flex;flex-direction:column;gap:6px;flex:1;}
 .guide .tag{font-size:.72rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--orange);}
 .guide h3{font-size:1.15rem;}
