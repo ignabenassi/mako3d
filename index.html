@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>document.documentElement.classList.add('js')</script>
 
 <title>Impresión 3D industrial en CABA | Repuestos y series cortas | Mako 3D</title>
 
@@ -12,7 +13,7 @@
 
 <link rel="canonical" href="https://www.mako3d.com.ar/">
 
-<meta name="theme-color" content="#090d14">
+<meta name="theme-color" content="#071d40">
 
 <!-- Ubicación (SEO local) -->
 <meta name="geo.region" content="AR-C">
@@ -39,9 +40,9 @@
 <meta name="twitter:image:alt" content="Bandeja de gran formato impresa en 3D sobre la cama de la impresora, Mako 3D">
 
 <!-- Favicons -->
-<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16.png">
-<link rel="apple-touch-icon" sizes="180x180" href="img/favicon-180.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/img/favicon-180.png">
 
 <!-- Cabeceras de seguridad recomendadas (reforzar también a nivel servidor/hosting) -->
 <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
@@ -73,7 +74,10 @@
       "slogan": "Construimos capa por capa lo que otros no pueden fabricar.",
       "email": "info@mako3d.com.ar",
       "telephone": "+54 9 11 5806-7003",
-      "founder": { "@type": "Person", "name": "Ignacio" },
+      "founder": {
+        "@type": "Person",
+        "name": "Ignacio"
+      },
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Ciudad Autónoma de Buenos Aires",
@@ -81,9 +85,18 @@
         "addressCountry": "AR"
       },
       "areaServed": [
-        { "@type": "City", "name": "Ciudad Autónoma de Buenos Aires" },
-        { "@type": "AdministrativeArea", "name": "Gran Buenos Aires" },
-        { "@type": "Country", "name": "Argentina" }
+        {
+          "@type": "City",
+          "name": "Ciudad Autónoma de Buenos Aires"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Gran Buenos Aires"
+        },
+        {
+          "@type": "Country",
+          "name": "Argentina"
+        }
       ],
       "knowsAbout": [
         "Impresión 3D industrial",
@@ -99,10 +112,38 @@
         "@type": "OfferCatalog",
         "name": "Servicios de impresión 3D",
         "itemListElement": [
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Impresión 3D industrial", "description": "Prototipos, piezas finales, gran formato hasta 80×80×100 cm y series cortas en materiales técnicos." } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Fabricación de repuestos plásticos", "description": "Relevamiento, modelado e impresión de repuestos discontinuados o difíciles de conseguir." } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Diseño y modelado 3D", "description": "De una idea, un plano o una pieza física a un archivo listo para producción." } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Postproceso y terminaciones", "description": "Terminaciones propias y acabados especiales como pintura y metalizado." } }
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Impresión 3D industrial",
+              "description": "Prototipos, piezas finales, gran formato hasta 80×80×100 cm y series cortas en materiales técnicos."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Fabricación de repuestos plásticos",
+              "description": "Relevamiento, modelado e impresión de repuestos discontinuados o difíciles de conseguir."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Diseño y modelado 3D",
+              "description": "De una idea, un plano o una pieza física a un archivo listo para producción."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Postproceso y terminaciones",
+              "description": "Terminaciones propias y acabados especiales como pintura y metalizado."
+            }
+          }
         ]
       },
       "contactPoint": {
@@ -126,18 +167,70 @@
       "url": "https://www.mako3d.com.ar/",
       "name": "Mako 3D",
       "inLanguage": "es-AR",
-      "publisher": { "@id": "https://www.mako3d.com.ar/#business" }
+      "publisher": {
+        "@id": "https://www.mako3d.com.ar/#business"
+      }
     },
     {
       "@type": "FAQPage",
       "@id": "https://www.mako3d.com.ar/#faq",
       "mainEntity": [
-        { "@type": "Question", "name": "¿Qué necesito para pedir una cotización?", "acceptedAnswer": { "@type": "Answer", "text": "Una foto de la pieza con medidas, o el archivo STL o STEP si lo tenés. Sumá la cantidad que necesitás y dónde va a trabajar la pieza: si está al sol, si toma temperatura o si soporta esfuerzo." } },
-        { "@type": "Question", "name": "¿Pueden fabricar un repuesto si no tengo el archivo?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. Relevamos la pieza física, o la original rota, la modelamos en 3D y la imprimimos. El archivo queda guardado para la próxima vez." } },
-        { "@type": "Question", "name": "¿Qué tan grande puede ser una pieza?", "acceptedAnswer": { "@type": "Answer", "text": "Hasta 80 × 80 × 100 cm en una sola pieza. Si es más grande, la dividimos en partes y la unimos." } },
-        { "@type": "Question", "name": "¿Hacen series o solo piezas únicas?", "acceptedAnswer": { "@type": "Answer", "text": "Las dos cosas. Con 6 equipos trabajando en paralelo hacemos series cortas de decenas o cientos de piezas. Si la cantidad es tan alta que conviene un molde de inyección, te lo decimos." } },
-        { "@type": "Question", "name": "¿Cuánto tarda un trabajo?", "acceptedAnswer": { "@type": "Answer", "text": "Depende del tamaño, el material y la cantidad. La mayoría de los trabajos se resuelven en días, no en semanas. El plazo exacto va en la cotización." } },
-        { "@type": "Question", "name": "¿Dónde están?", "acceptedAnswer": { "@type": "Answer", "text": "Nuestro taller está en la Ciudad Autónoma de Buenos Aires. Trabajamos con empresas de CABA, GBA y el resto del país." } }
+        {
+          "@type": "Question",
+          "name": "¿Qué necesito para cotizar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Si tenés el archivo (STL, 3MF u OBJ), cotizá online al instante. Si no, mandanos una foto con medidas por WhatsApp, junto con la cantidad y dónde va a trabajar la pieza. Más detalle en la guía para cotizar."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Pueden fabricar un repuesto si no tengo el archivo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. Relevamos la pieza, aunque esté rota, la modelamos en 3D y la imprimimos. El archivo queda guardado para la próxima vez."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué materiales usan?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Plásticos técnicos: PLA, PETG, ABS, ASA, TPU, nylon y materiales con fibra de carbono. Elegimos según dónde va a trabajar la pieza; lo explicamos en la guía de materiales."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué tan grande puede ser una pieza?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Hasta 80 × 80 × 100 cm en una sola pieza. Si es más grande, la dividimos en partes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Hacen series o solo piezas únicas?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Las dos cosas. Con 6 impresoras en paralelo hacemos series de decenas o cientos de piezas. Si la cantidad es tan alta que conviene un molde de inyección, te lo decimos."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuánto tarda un trabajo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La mayoría de los trabajos se resuelven en días, no en semanas. El plazo exacto va en la cotización."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Dónde están?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nuestro taller está en la Ciudad Autónoma de Buenos Aires. Trabajamos con empresas de CABA, GBA y el resto del país."
+          }
+        }
       ]
     }
   ]
@@ -146,25 +239,23 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=3">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/bandeja.jpg">
+<link rel="stylesheet" href="home.css?v=2">
 </head>
 <body>
-<div class="scroll-progress" id="scrollProgress"></div>
 
 <header>
   <div class="wrap">
     <nav>
-      <a href="#" class="logo" id="logoTop"><img src="img/logo.png" alt="Mako 3D"></a>
-      <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">☰</button>
+      <a href="/" class="logo"><img src="img/logo.png" alt="Mako 3D" height="30"></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
       <div class="navlinks" id="navLinks">
-        <a href="#servicios">Servicios</a>
-        <a href="#materiales">Materiales</a>
         <a href="#casos">Trabajos</a>
+        <a href="#servicios">Servicios</a>
         <a href="/guias/">Guías</a>
         <a href="#faq">Preguntas</a>
-        <a href="#contacto">Contacto</a>
-        <a href="cotizar" class="cta-btn">Cotizar online</a>
+        <a href="/cotizar" class="btn btn-orange">Cotizar online</a>
       </div>
     </nav>
   </div>
@@ -172,58 +263,49 @@
 
 <main>
 
-<section class="hero">
+<section class="hero" id="inicio">
   <div class="wrap">
-    <div class="hero-tag">Impresión 3D industrial · CABA</div>
-    <h1>Construimos <em>capa por capa</em> lo que otros no pueden fabricar.</h1>
-    <p>Repuestos discontinuados, herramental y series cortas en plásticos técnicos. Sin moldes, en días y no en semanas. Para empresas de CABA, GBA y todo el país.</p>
-    <div class="hero-actions">
-      <a href="cotizar" class="btn-primary">¿Tenés el archivo? Cotizá online</a>
-      <a href="https://wa.me/5491158067003?text=Hola%2C%20vengo%20de%20la%20web%20de%20Mako%203D.%20Necesito%20cotizar%20una%20pieza." target="_blank" rel="noopener noreferrer" class="btn-outline">¿Tenés la pieza? Mandá una foto</a>
+    <div class="hero-grid">
+      <div>
+        <h1><span class="kicker">Impresión 3D industrial en CABA</span> Repuestos y piezas técnicas <em>en días</em>, no en semanas.</h1>
+        <p>Prototipos, repuestos y series cortas, sin moldes. En plásticos técnicos como nylon con fibra de carbono, ASA y PETG.</p>
+        <div class="hero-actions">
+          <a href="/cotizar" class="btn btn-orange">¿Tenés el archivo? Cotizá online →</a>
+          <a href="https://wa.me/5491158067003?text=Hola%2C%20vengo%20de%20la%20web%20de%20Mako%203D.%20Necesito%20cotizar%20una%20pieza." target="_blank" rel="noopener noreferrer" class="btn btn-ghost">Mandá una foto por WhatsApp</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <img src="img/bandeja.jpg" alt="Pieza de gran formato impresa en 3D sobre la cama de una impresora Elegoo OrangeStorm Giga" width="1000" height="1333" fetchpriority="high">
+        <div class="hero-badge"><strong>80×80×100 cm</strong><span>en una sola pieza</span></div>
+      </div>
     </div>
-    <div class="hero-stats">
-      <div><span>80×80×100</span><small>cm de volumen máximo, en una sola pieza</small></div>
-      <div><span>6</span><small>equipos produciendo en paralelo</small></div>
-      <div><span>10+</span><small>años de experiencia</small></div>
-      <div><span>Nylon y CF</span><small>materiales técnicos con fibra de carbono</small></div>
+    <div class="stats">
+      <div class="stat"><strong data-count="3" data-suffix=" días">3 días</strong><span>una tanda de carcasas en serie</span></div>
+      <div class="stat"><strong data-count="6">6</strong><span>impresoras en paralelo</span></div>
+      <div class="stat"><strong data-count="10" data-suffix="+">10+</strong><span>años de experiencia</span></div>
     </div>
   </div>
 </section>
 
-<section class="sectors" id="para-quien">
+<section class="who-sec" id="para-quien">
   <div class="wrap">
     <div class="sec-head">
-      <span class="sec-label">// PARA QUIÉN TRABAJAMOS</span>
-      <h2>Si tenés uno de estos problemas, hablemos</h2>
+      <span class="eyebrow">Para quién trabajamos</span>
+      <h2 class="sec-title">¿Cuál es tu caso?</h2>
     </div>
-    <div class="sector-grid">
-      <article class="sector-card">
-        <h3>Mantenimiento industrial y agro</h3>
-        <p>Una máquina parada por una pieza plástica que ya no se fabrica o que tarda semanas en llegar. La relevamos, la modelamos y la imprimimos en el material que pide el uso.</p>
-        <ul>
-          <li>Engranajes, bujes y guías</li>
-          <li>Tapas, protecciones y carcasas</li>
-          <li>Piezas de dosificadoras y maquinaria agrícola</li>
-        </ul>
-      </article>
-      <article class="sector-card">
-        <h3>Desarrollo de producto</h3>
-        <p>Prototipos funcionales para validar antes de invertir en moldes, y preseries para probar en el mercado. Piezas grandes en una sola pieza, sin uniones.</p>
-        <ul>
-          <li>Prototipos funcionales y de presentación</li>
-          <li>Preseries y validación de diseño</li>
-          <li>Carcasas y gabinetes a medida</li>
-        </ul>
-      </article>
-      <article class="sector-card">
-        <h3>Producción y herramental</h3>
-        <p>Series cortas sin el costo de un molde, y herramental para la línea de producción. Varias máquinas en paralelo para cumplir con cantidades.</p>
-        <ul>
-          <li>Jigs, fixtures y calibres</li>
-          <li>Soportes y piezas para línea</li>
-          <li>Series cortas de decenas o cientos de piezas</li>
-        </ul>
-      </article>
+    <div class="who-grid">
+      <div class="who reveal">
+        <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/></svg></div>
+        <div><h3>Máquina parada</h3><p>El repuesto plástico ya no se fabrica o tarda semanas en llegar.</p></div>
+      </div>
+      <div class="who reveal">
+        <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg></div>
+        <div><h3>Producto en desarrollo</h3><p>Prototipos y preseries antes de invertir en moldes.</p></div>
+      </div>
+      <div class="who reveal">
+        <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8l-9-5-9 5 9 5 9-5zM3 8v8l9 5 9-5V8M12 13v8"/></svg></div>
+        <div><h3>Piezas en cantidad</h3><p>Series cortas, jigs y herramental, sin costo de molde.</p></div>
+      </div>
     </div>
   </div>
 </section>
@@ -231,308 +313,195 @@
 <section class="cases" id="casos">
   <div class="wrap">
     <div class="sec-head">
-      <span class="sec-label">// CASOS REALES</span>
-      <h2>Qué problema había y cómo lo resolvimos</h2>
-      <p>Tres trabajos contados de punta a punta: la situación, la decisión técnica y el resultado.</p>
+      <span class="eyebrow">Casos reales</span>
+      <h2 class="sec-title">Problemas que ya resolvimos</h2>
     </div>
-    <div class="case-grid">
-      <article class="case-card">
-        <img src="img/caso-carcasas-serie.jpg" alt="Decenas de carcasas negras impresas en 3D en ABS, con sus tapas y casquillos, listas para entregar" width="1200" height="900" loading="lazy">
+    <div class="case-list">
+      <article class="case reveal">
+        <div class="case-photo"><img src="img/caso-carcasas-serie.jpg" alt="Decenas de carcasas negras impresas en 3D en ABS, con sus tapas y casquillos" width="1200" height="900" loading="lazy"></div>
         <div class="case-body">
           <span class="case-tag">Producción en serie · ABS</span>
           <h3>Carcasas en serie para instrumentos de medición</h3>
-          <dl>
-            <dt>Situación</dt><dd>Un fabricante de instrumentos de medición industrial necesitaba carcasas en cantidad, de cuatro piezas por equipo.</dd>
-            <dt>Qué hicimos</dt><dd>Pruebas y ajuste de los pulsadores; después, la serie en varias máquinas en paralelo, con cada pieza revisada.</dd>
-            <dt>Resultado</dt><dd>Tanda entregada en 3 días. Hoy es un pedido que se repite.</dd>
-          </dl>
+          <div class="case-big">3 días<small>por tanda, con varias impresoras en paralelo</small></div>
+          <p>Para un fabricante de instrumentos de medición industrial. Hoy es un pedido que se repite.</p>
         </div>
       </article>
-      <article class="case-card">
-        <img src="img/caso-engranajes.jpg" alt="Engranajes y cremalleras impresos en 3D en nylon con fibra de carbono" width="1200" height="900" loading="lazy">
+      <article class="case reveal">
+        <div class="case-photo"><img src="img/caso-engranajes.jpg" alt="Engranajes y cremallera impresos en 3D en nylon con fibra de carbono" width="1200" height="900" loading="lazy"></div>
         <div class="case-body">
           <span class="case-tag">Repuesto · Nylon + fibra de carbono</span>
           <h3>Engranajes de un repuesto que ya no se fabrica</h3>
-          <dl>
-            <dt>Situación</dt><dd>Engranajes y cremallera de un repuesto discontinuado.</dd>
-            <dt>Qué hicimos</dt><dd>Tenían que aguantar esfuerzo y temperatura: las imprimimos en nylon con fibra de carbono.</dd>
-            <dt>Resultado</dt><dd>Del repuesto que no se conseguía a la pieza lista para volver a trabajar.</dd>
-          </dl>
-        </div>
-      </article>
-      <article class="case-card">
-        <img src="img/caso-organizador.jpg" alt="Organizador impreso en 3D para el cajón de un carro de emergencias, con sectores de color por medicamento" width="1200" height="900" loading="lazy">
-        <div class="case-body">
-          <span class="case-tag">Salud · Diseño a medida</span>
-          <h3>Un lugar para cada medicamento</h3>
-          <dl>
-            <dt>Situación</dt><dd>Un carro de emergencias donde todo tiene que encontrarse al instante.</dd>
-            <dt>Qué hicimos</dt><dd>Un organizador con cada hueco a medida y sectores identificados por color y nombre.</dd>
-            <dt>Resultado</dt><dd>Nada se mueve al abrir el cajón y se ve enseguida si falta algo.</dd>
-          </dl>
+          <div class="case-big">Discontinuado<small>y de nuevo funcionando</small></div>
+          <p>Tenían que aguantar esfuerzo y temperatura: los imprimimos en nylon con fibra de carbono.</p>
         </div>
       </article>
     </div>
 
-    <div class="reviews" id="resenas">
-      <div class="reviews-head">
-        <h3>Lo que dicen los clientes</h3>
-        <a href="https://share.google/m2l5hlDStwLk7MWc2" target="_blank" rel="noopener noreferrer" class="reviews-score"><span class="stars" aria-hidden="true">★★★★★</span> 5,0 en Google · 19 reseñas</a>
+    <div class="ba-row">
+      <div class="ba reveal" id="ba" tabindex="0" role="img" aria-label="Comparación antes y después: apoyabrazos roto y repuesto impreso en 3D. Usá las flechas para comparar.">
+        <img src="img/apoyabrazos-antes.jpg" alt="Apoyabrazos de silla de oficina original, roto" width="1000" height="1000" loading="lazy">
+        <img class="after" src="img/apoyabrazos-despues.jpg" alt="Repuesto de apoyabrazos impreso en 3D, instalado" width="1000" height="1000" loading="lazy">
+        <span class="lbl l">Antes</span><span class="lbl r">Después</span>
+        <div class="handle"></div>
       </div>
-      <div class="review-grid">
-        <figure class="review-card">
-          <blockquote>Se me había volado una tapa del portaequipajes de mí auto y no la podía conseguir por ningún lado. Me contacté con Ignacio de Mako y me pidió si tenía la del otro lado como muestra... Hizo el modelado y me imprimió un juego nuevo! Quedaron excelentes! La atención fue excelente. Recomiendo totalmente.</blockquote>
-          <figcaption>Lucas <span>· Reseña en Google</span></figcaption>
-        </figure>
-        <figure class="review-card">
-          <blockquote>Excelente atencion y servicio muy atento. Lo que necesité siempre me lo resolvieron con un trato muy fiel y didactico. Se nota la experiencia. Uso de proveedor y recomiendo 100%, muchas gracias!!</blockquote>
-          <figcaption>Juan Cruz <span>· Reseña en Google</span></figcaption>
-        </figure>
-        <figure class="review-card">
-          <blockquote>Excelente. Super atentos y amables en todo momento; más aún teniendo en cuenta que el pedido era difícil de entender y de realizar (no solo fue ágil, sino que re pacientes). Super recomendado</blockquote>
-          <figcaption>Macarena <span>· Reseña en Google</span></figcaption>
-        </figure>
+      <div class="ba-copy reveal">
+        <span class="eyebrow">Repuesto a medida</span>
+        <h3>Se rompió y no había repuesto.</h3>
+        <p>Lo medimos, lo modelamos y lo imprimimos. Quedó como el original.</p>
+        <span class="hint">← Arrastrá para comparar →</span>
       </div>
-      <a href="https://share.google/m2l5hlDStwLk7MWc2" target="_blank" rel="noopener noreferrer" class="reviews-more">Ver todas las reseñas en Google →</a>
     </div>
   </div>
 </section>
 
-<section class="portfolio" id="portfolio">
+<section class="reviews" id="resenas">
   <div class="wrap">
     <div class="sec-head">
-      <span class="sec-label">// TRABAJOS REALIZADOS</span>
-      <h2>Piezas que ya están en uso</h2>
-      <p>Repuestos, carcasas, uso exterior y gran formato. Una selección de trabajos reales.</p>
-    </div>
-    <div class="p-grid">
-      <div class="p-card p-wide">
-        <img src="img/apoyabrazos-antes-despues.jpg" alt="Apoyabrazos de silla de oficina: el original roto y el repuesto impreso en 3D instalado" width="1600" height="1000" loading="lazy">
-        <div class="cap"><small>REPUESTO</small><p>Apoyabrazos: el original roto y el repuesto instalado</p></div>
-      </div>
-      <div class="p-card">
-        <img src="img/carcasa-equipo.jpg" alt="Carcasa grande de un equipo impresa en 3D, vista por dentro" width="1000" height="1250" loading="lazy">
-        <div class="cap"><small>CARCASAS</small><p>Carcasa de equipo en una sola pieza</p></div>
-      </div>
-      <div class="p-card">
-        <img src="img/caja-exterior.jpg" alt="Carcasa técnica impresa en 3D instalada en una unidad exterior de aire acondicionado" width="1100" height="1466" loading="lazy">
-        <div class="cap"><small>USO EXTERIOR</small><p>Carcasa técnica resistente a la intemperie</p></div>
-      </div>
-      <div class="p-card">
-        <img src="img/bandeja.jpg" alt="Bandeja de gran formato impresa en 3D sobre la cama de una impresora Elegoo OrangeStorm Giga" width="1000" height="1333" loading="lazy">
-        <div class="cap"><small>GRAN FORMATO</small><p>Prototipado y desarrollo de producto</p></div>
-      </div>
-      <div class="p-card">
-        <img src="img/gabinete-piezas.jpg" alt="Gabinete impreso en 3D desarmado: marcos, soportes y abrazaderas" width="1000" height="1250" loading="lazy">
-        <div class="cap"><small>DESARROLLO DE PRODUCTO</small><p>Gabinete completo, pieza por pieza</p></div>
+      <span class="eyebrow">Reseñas</span>
+      <h2 class="sec-title">Lo que dicen los clientes</h2>
+      <div class="g-score">
+        <div class="g-logo">
+          <svg width="20" height="20" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.6 5.4 2.7 13.2l7.9 6.2C12.5 13.6 17.8 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 3-2.3 5.5-4.8 7.2l7.7 6c4.5-4.2 6.9-10.3 6.9-17.7z"/><path fill="#FBBC05" d="M10.6 28.6c-.5-1.4-.8-3-.8-4.6s.3-3.2.8-4.6l-7.9-6.2C1 16.6 0 20.2 0 24s1 7.4 2.7 10.8l7.9-6.2z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.7-6c-2.1 1.4-4.9 2.3-8.2 2.3-6.2 0-11.5-4.1-13.4-9.9l-7.9 6.2C6.6 42.6 14.6 48 24 48z"/></svg>
+          Google
+        </div>
+        <span class="g-num">5,0</span>
+        <span class="stars" aria-label="5 de 5 estrellas">★★★★★</span>
+        <span class="g-count">19 reseñas</span>
       </div>
     </div>
-    <p class="portfolio-more">Subimos trabajos nuevos y detrás de escena del taller en Instagram: <a href="https://www.instagram.com/mako3d.ar/" target="_blank" rel="noopener noreferrer">@mako3d.ar</a></p>
+    <div class="rev-grid">
+      <figure class="rev reveal">
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <blockquote>
+          <p class="quote">“Hizo el modelado y me imprimió un juego nuevo!”</p>
+          <p class="full">Se me había volado una tapa del portaequipajes de mí auto y no la podía conseguir por ningún lado. Me contacté con Ignacio de Mako y me pidió si tenía la del otro lado como muestra...</p>
+        </blockquote>
+        <figcaption class="who-r"><span class="avatar" style="background:#3b6fd1" aria-hidden="true">L</span><div><strong>Lucas</strong><span>Reseña en Google</span></div></figcaption>
+      </figure>
+      <figure class="rev reveal">
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <blockquote>
+          <p class="quote">“Se nota la experiencia. Uso de proveedor y recomiendo 100%”</p>
+          <p class="full">Excelente atencion y servicio muy atento. Lo que necesité siempre me lo resolvieron con un trato muy fiel y didactico.</p>
+        </blockquote>
+        <figcaption class="who-r"><span class="avatar" style="background:#f28c28" aria-hidden="true">J</span><div><strong>Juan Cruz</strong><span>Reseña en Google</span></div></figcaption>
+      </figure>
+      <figure class="rev reveal">
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <blockquote>
+          <p class="quote">“No solo fue ágil, sino que re pacientes”</p>
+          <p class="full">Super atentos y amables en todo momento; más aún teniendo en cuenta que el pedido era difícil de entender y de realizar.</p>
+        </blockquote>
+        <figcaption class="who-r"><span class="avatar" style="background:#2e9b6a" aria-hidden="true">M</span><div><strong>Macarena</strong><span>Reseña en Google</span></div></figcaption>
+      </figure>
+    </div>
+    <a href="https://share.google/m2l5hlDStwLk7MWc2" target="_blank" rel="noopener noreferrer" class="rev-more">Ver las 19 reseñas en Google →</a>
+  </div>
+</section>
+
+<section id="trabajos">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Trabajos realizados</span>
+      <h2 class="sec-title">Piezas que ya están en uso</h2>
+    </div>
+    <div class="work-grid">
+      <figure class="work reveal"><img src="img/carcasa-equipo.jpg" alt="Carcasa grande de un equipo impresa en 3D en una sola pieza, vista por dentro" width="1000" height="1250" loading="lazy"><figcaption><small>Carcasas</small><strong>Carcasa de equipo en una pieza</strong></figcaption></figure>
+      <figure class="work reveal"><img src="img/caja-exterior.jpg" alt="Carcasa técnica impresa en 3D instalada en una unidad exterior de aire acondicionado" width="1100" height="1466" loading="lazy"><figcaption><small>Uso exterior</small><strong>Resistente a la intemperie</strong></figcaption></figure>
+      <figure class="work reveal"><img src="img/gabinete-piezas.jpg" alt="Gabinete impreso en 3D desarmado: marcos, soportes y abrazaderas" width="1000" height="1250" loading="lazy"><figcaption><small>Desarrollo de producto</small><strong>Gabinete pieza por pieza</strong></figcaption></figure>
+      <figure class="work reveal"><img src="img/caso-organizador.jpg" alt="Organizador impreso en 3D para el cajón de un carro de emergencias médicas" width="1200" height="900" loading="lazy"><figcaption><small>Salud</small><strong>Organizador a medida</strong></figcaption></figure>
+    </div>
+    <a href="https://www.instagram.com/mako3d.ar/" target="_blank" rel="noopener noreferrer" class="more-link">Más trabajos en Instagram →</a>
   </div>
 </section>
 
 <section class="services" id="servicios">
   <div class="wrap">
     <div class="sec-head">
-      <span class="sec-label">// SERVICIOS</span>
-      <h2>Todo el proceso, en un solo lugar</h2>
-      <p>Desde la pieza rota o la idea hasta la pieza terminada y revisada.</p>
+      <span class="eyebrow">Servicios</span>
+      <h2 class="sec-title">De la idea a la pieza terminada</h2>
     </div>
-    <div class="service-grid">
-      <div class="service-card">
-        <span class="num">01</span>
-        <h3>Impresión 3D</h3>
-        <p>Prototipos, piezas finales, gran formato de hasta 80×80×100 cm, series cortas y producción en materiales técnicos.</p>
-      </div>
-      <div class="service-card">
-        <span class="num">02</span>
-        <h3>Diseño y modelado</h3>
-        <p>De una idea, un plano o una pieza física a un archivo listo para producir. Relevamos y redibujamos repuestos.</p>
-      </div>
-      <div class="service-card">
-        <span class="num">03</span>
-        <h3>Postproceso</h3>
-        <p>Terminaciones propias y acabados especiales como pintura y metalizado, para que la pieza salga lista para usar o mostrar.</p>
-      </div>
-      <div class="service-card">
-        <span class="num">04</span>
-        <h3>Asesoramiento</h3>
-        <p>Evaluamos cada caso con sinceridad, incluso si eso significa no venderte nada.</p>
-      </div>
+    <div class="serv-grid">
+      <div class="serv reveal"><div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 19l7-7 3 3-7 7-3-3zM18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5zM2 2l7.6 7.6"/></svg></div><div><h3>Diseño y modelado 3D</h3><p>De la idea o la pieza rota al archivo</p></div></div>
+      <div class="serv reveal"><div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9V3h12v6M6 18H4v-7h16v7h-2M8 14h8v7H8z"/></svg></div><div><h3>Impresión 3D</h3><p>Gran formato hasta 80×80×100 cm</p></div></div>
+      <div class="serv reveal"><div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5-4.9-2.6-4.9 2.6.9-5.5-4-3.9 5.5-.8z"/></svg></div><div><h3>Postproceso</h3><p>Pintura y metalizado</p></div></div>
+      <div class="serv reveal"><div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><div><h3>Asesoramiento</h3><p>En cada paso, te decimos si conviene</p></div></div>
     </div>
-    <p class="services-note">¿Preferís producir internamente? También vendemos impresoras con capacitación y soporte técnico. <a href="#contacto">Consultanos</a>.</p>
+    <div class="guide-links">
+      <span>Guías:</span>
+      <a href="/guias/que-material-elegir">Qué material elegir</a>
+      <a href="/guias/como-pedir-cotizacion">Cómo pedir una cotización</a>
+      <a href="/guias/imprimir-o-inyectar">¿Imprimir o hacer un molde?</a>
+    </div>
   </div>
 </section>
 
-<section class="process" id="proceso">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="sec-label">// CÓMO TRABAJAMOS</span>
-      <h2>De la foto a la pieza, en 4 pasos</h2>
-      <p>No hace falta que tengas un archivo 3D ni que sepas de impresión 3D. <a href="/guias/como-pedir-cotizacion" class="text-link">Qué mandar para cotizar →</a></p>
-    </div>
-    <ol class="steps">
-      <li>
-        <span class="num">01</span>
-        <h3>Nos mandás la pieza</h3>
-        <p>Una foto con medidas, la pieza original o el archivo STL/STEP. Contanos cuántas necesitás y dónde va a trabajar.</p>
-      </li>
-      <li>
-        <span class="num">02</span>
-        <h3>Evaluamos si conviene</h3>
-        <p>Vemos si la impresión 3D es la mejor opción y qué material pide el uso. Si conviene otro proceso, te lo decimos.</p>
-      </li>
-      <li>
-        <span class="num">03</span>
-        <h3>Te pasamos la cotización</h3>
-        <p>Con material, plazo y precio claros. Si hace falta modelar la pieza, va incluido en el presupuesto.</p>
-      </li>
-      <li>
-        <span class="num">04</span>
-        <h3>Producimos y revisamos</h3>
-        <p>Imprimimos, hacemos el postproceso y revisamos cada pieza a mano antes de entregarla.</p>
-      </li>
-    </ol>
-  </div>
-</section>
-
-<section class="about" id="sobre">
+<section id="sobre">
   <div class="wrap about-grid">
-    <div class="about-copy">
-      <span class="sec-label">// SOBRE MAKO</span>
-      <h2>Soluciones reales, no solo piezas</h2>
-      <p>Soy Ignacio. Fundé Mako 3D, un taller de impresión 3D industrial en la Ciudad de Buenos Aires, después de más de 10 años trabajando con impresión 3D. Lo hice para dar algo que al rubro le falta: asesoramiento honesto y piezas que funcionan.</p>
-      <p>Trabajamos principalmente con empresas: mantenimiento, ingeniería, desarrollo de producto y producción. También acompañamos proyectos particulares cuando requieren una solución técnica a medida.</p>
-      <div class="about-stats">
-        <div><span>6</span><small>equipos, incluido gran formato</small></div>
-        <div><span>100%</span><small>asesoramiento sin compromiso</small></div>
-      </div>
-    </div>
-    <div class="about-visual">
-      <img src="img/equipo-printer.jpg" alt="Ignacio, fundador de Mako 3D, retirando una pieza impresa en el taller" width="1100" height="734" loading="lazy">
-      <div class="av-cap"><small>EN EL TALLER</small><p>Cada pieza se revisa a mano antes de salir</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="materials" id="materiales">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="sec-label">// MATERIALES</span>
-      <h2>El material lo elige el uso, no la moda</h2>
-      <p>Trabajamos con impresión 3D FDM en plásticos técnicos. Estos son los que más usamos y para qué sirve cada uno. <a href="/guias/que-material-elegir" class="text-link">Ver la guía completa de materiales →</a></p>
-    </div>
-    <div class="mat-grid">
-      <div class="mat-card"><h3>Nylon (PA)</h3><p>Resistente al desgaste y a la fatiga. Engranajes, bujes, piezas móviles.</p></div>
-      <div class="mat-card mat-strong"><h3>Nylon con fibra de carbono (PA-CF)</h3><p>Rigidez y estabilidad dimensional. Herramental, soportes y piezas mecánicas exigidas.</p></div>
-      <div class="mat-card mat-strong"><h3>PET / PETG con fibra de carbono</h3><p>Rígido, liviano y estable. Jigs, fixtures, soportes y estructuras.</p></div>
-      <div class="mat-card"><h3>ASA</h3><p>Resiste el sol y la intemperie. Ideal para agro, carcasas y piezas de exterior.</p></div>
-      <div class="mat-card"><h3>ABS</h3><p>Piezas funcionales que soportan más temperatura. Se puede lijar y pintar.</p></div>
-      <div class="mat-card"><h3>PETG</h3><p>Tenaz y con buena resistencia química. Piezas funcionales de uso general.</p></div>
-      <div class="mat-card"><h3>TPU</h3><p>Flexible. Juntas, topes, protecciones y amortiguadores.</p></div>
-      <div class="mat-card"><h3>PLA</h3><p>Prototipos, maquetas y piezas sin exigencia térmica ni mecánica.</p></div>
-    </div>
-
-    <div class="honest-box">
-      <div>
-        <span class="sec-label">// CON SINCERIDAD</span>
-        <h3>Cuándo la impresión 3D no conviene</h3>
-        <p>No todo se resuelve imprimiendo. Si tu pieza entra en alguno de estos casos, te lo vamos a decir antes de cotizar.</p>
-      </div>
-      <ul>
-        <li><strong>Temperatura alta y constante:</strong> si la pieza trabaja por encima de lo que soporta un plástico técnico.</li>
-        <li><strong>Piezas de seguridad o carga crítica:</strong> donde una falla pone en riesgo a personas o equipos.</li>
-        <li><strong>Miles de unidades:</strong> a partir de cierto volumen, un molde de inyección sale más barato por pieza.</li>
-        <li><strong>Tolerancias muy finas:</strong> ajustes de precisión que piden mecanizado.</li>
-      </ul>
-      <p class="honest-note">Y muchas veces conviene combinar: imprimir mientras el producto se valida e inyectar cuando el volumen lo justifica. <a href="/guias/imprimir-o-inyectar" class="text-link">Leer la guía: ¿imprimir o inyectar? →</a></p>
+    <div class="about-photo reveal"><img src="img/equipo-printer.jpg" alt="Ignacio, fundador de Mako 3D, retirando una pieza impresa en el taller" width="1100" height="734" loading="lazy"></div>
+    <div class="about-copy reveal">
+      <span class="eyebrow">Sobre Mako</span>
+      <h2>Soy Ignacio.</h2>
+      <p>Trabajo con impresión 3D hace más de 10 años. Fundé Mako 3D, un taller de impresión 3D industrial en la Ciudad de Buenos Aires, para dar lo que al rubro le falta: asesoramiento honesto y piezas que funcionan.</p>
+      <p class="sign">Cada pieza se revisa a mano antes de salir.</p>
+      <div class="chips"><span class="chip">Taller en CABA</span><span class="chip">6 impresoras</span><span class="chip">Gran formato</span><span class="chip">Empresas y particulares</span></div>
     </div>
   </div>
 </section>
 
 <section class="faq" id="faq">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="sec-label">// PREGUNTAS FRECUENTES</span>
-      <h2>Lo que más nos preguntan</h2>
+  <div class="wrap faq-grid">
+    <div class="faq-side">
+      <span class="eyebrow">Preguntas frecuentes</span>
+      <h2 class="sec-title">Lo que más nos preguntan</h2>
+      <p>¿Tenés otra duda? Escribinos por <a href="https://wa.me/5491158067003" target="_blank" rel="noopener noreferrer">WhatsApp</a> o mirá las <a href="/guias/">guías</a>.</p>
     </div>
     <div class="faq-list">
-      <details>
-        <summary>¿Qué necesito para pedir una cotización?</summary>
-        <p>Una foto de la pieza con medidas, o el archivo STL o STEP si lo tenés. Sumá la cantidad que necesitás y dónde va a trabajar la pieza: si está al sol, si toma temperatura o si soporta esfuerzo.</p>
-      </details>
-      <details>
-        <summary>¿Pueden fabricar un repuesto si no tengo el archivo?</summary>
-        <p>Sí. Relevamos la pieza física, o la original rota, la modelamos en 3D y la imprimimos. El archivo queda guardado para la próxima vez.</p>
-      </details>
-      <details>
-        <summary>¿Qué tan grande puede ser una pieza?</summary>
-        <p>Hasta 80 × 80 × 100 cm en una sola pieza. Si es más grande, la dividimos en partes y la unimos.</p>
-      </details>
-      <details>
-        <summary>¿Hacen series o solo piezas únicas?</summary>
-        <p>Las dos cosas. Con 6 equipos trabajando en paralelo hacemos series cortas de decenas o cientos de piezas. Si la cantidad es tan alta que conviene un molde de inyección, te lo decimos.</p>
-      </details>
-      <details>
-        <summary>¿Cuánto tarda un trabajo?</summary>
-        <p>Depende del tamaño, el material y la cantidad. La mayoría de los trabajos se resuelven en días, no en semanas. El plazo exacto va en la cotización.</p>
-      </details>
-      <details>
-        <summary>¿Dónde están?</summary>
-        <p>Nuestro taller está en la Ciudad Autónoma de Buenos Aires. Trabajamos con empresas de CABA, GBA y el resto del país.</p>
-      </details>
+      <details><summary>¿Qué necesito para cotizar?</summary><p>Si tenés el archivo (STL, 3MF u OBJ), cotizá online al instante. Si no, mandanos una foto con medidas por WhatsApp, junto con la cantidad y dónde va a trabajar la pieza. Más detalle en la <a href="/guias/como-pedir-cotizacion">guía para cotizar</a>.</p></details>
+      <details><summary>¿Pueden fabricar un repuesto si no tengo el archivo?</summary><p>Sí. Relevamos la pieza, aunque esté rota, la modelamos en 3D y la imprimimos. El archivo queda guardado para la próxima vez.</p></details>
+      <details><summary>¿Qué materiales usan?</summary><p>Plásticos técnicos: PLA, PETG, ABS, ASA, TPU, nylon y materiales con fibra de carbono. Elegimos según dónde va a trabajar la pieza; lo explicamos en la <a href="/guias/que-material-elegir">guía de materiales</a>.</p></details>
+      <details><summary>¿Qué tan grande puede ser una pieza?</summary><p>Hasta 80 × 80 × 100 cm en una sola pieza. Si es más grande, la dividimos en partes.</p></details>
+      <details><summary>¿Hacen series o solo piezas únicas?</summary><p>Las dos cosas. Con 6 impresoras en paralelo hacemos series de decenas o cientos de piezas. Si la cantidad es tan alta que conviene un molde de inyección, te lo decimos.</p></details>
+      <details><summary>¿Cuánto tarda un trabajo?</summary><p>La mayoría de los trabajos se resuelven en días, no en semanas. El plazo exacto va en la cotización.</p></details>
+      <details><summary>¿Dónde están?</summary><p>Nuestro taller está en la Ciudad Autónoma de Buenos Aires. Trabajamos con empresas de CABA, GBA y el resto del país.</p></details>
     </div>
   </div>
 </section>
 
-<section class="contact" id="contacto">
+<section class="cta" id="contacto">
   <div class="wrap">
-    <div class="contact-box">
-      <div>
-        <h2>¿Tenés una pieza que no conseguís o un proyecto para cotizar?</h2>
-        <p>Mandanos una foto con medidas, el archivo STL/STEP o la idea. Te respondemos con un presupuesto real, y si la impresión 3D no es la mejor opción, también te lo decimos.</p>
-      </div>
-      <div class="contact-actions">
-        <a href="cotizar" class="btn-primary">¿Tenés el STL? Cotizá online</a>
-        <a href="https://wa.me/5491158067003?text=Hola%2C%20vengo%20de%20la%20web%20de%20Mako%203D.%20Necesito%20cotizar%20una%20pieza." target="_blank" rel="noopener noreferrer" class="btn-outline">Enviar por WhatsApp</a>
-        <a href="mailto:info@mako3d.com.ar?subject=Cotizaci%C3%B3n%20desde%20la%20web%20-%20Mako%203D&body=Hola%2C%20vengo%20de%20la%20web%20y%20quiero%20cotizar%20una%20pieza.%0A%0APieza%3A%20%0ACantidad%3A%20%0AUso%20(exterior%2C%20temperatura%2C%20esfuerzo)%3A%20%0A%0AAdjunto%20foto%20con%20medidas%20o%20archivo%20STL%2FSTEP." rel="noopener noreferrer" class="btn-outline">Enviar por Email</a>
-      </div>
+    <h2>¿Tenés una pieza que no conseguís?</h2>
+    <p>Mandanos una foto o el archivo. Si la impresión 3D no es lo mejor para tu pieza, te lo decimos.</p>
+    <div class="hero-actions">
+      <a href="/cotizar" class="btn btn-orange">Cotizá online →</a>
+      <a href="https://wa.me/5491158067003?text=Hola%2C%20vengo%20de%20la%20web%20de%20Mako%203D.%20Necesito%20cotizar%20una%20pieza." target="_blank" rel="noopener noreferrer" class="btn btn-ghost">WhatsApp</a>
     </div>
+    <span class="mail">O escribinos a <a href="mailto:info@mako3d.com.ar?subject=Cotizaci%C3%B3n%20desde%20la%20web%20-%20Mako%203D&body=Hola%2C%20vengo%20de%20la%20web%20y%20quiero%20cotizar%20una%20pieza.%0A%0APieza%3A%20%0ACantidad%3A%20%0AUso%20(exterior%2C%20temperatura%2C%20esfuerzo)%3A%20%0A%0AAdjunto%20foto%20con%20medidas%20o%20archivo.">info@mako3d.com.ar</a></span>
   </div>
 </section>
 
 </main>
 
 <footer>
-  <div class="wrap">
-    <div class="foot-row">
-      <div class="foot-info">
-        <strong>Mako 3D</strong> · Impresión 3D industrial en CABA, Buenos Aires<br>
-        <a href="https://wa.me/5491158067003" target="_blank" rel="noopener noreferrer">+54 9 11 5806-7003</a> · <a href="mailto:info@mako3d.com.ar">info@mako3d.com.ar</a><br>
-        © 2026 Mako 3D. Todos los derechos reservados. · <a href="politica-de-privacidad" style="text-decoration:underline;">Política de Privacidad</a>
-      </div>
-      <div class="foot-social">
-        <a href="https://www.instagram.com/mako3d.ar/" target="_blank" rel="noopener noreferrer">Instagram</a>
-        <a href="https://www.linkedin.com/company/mako3d/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a href="https://www.tiktok.com/@mako.3d" target="_blank" rel="noopener noreferrer">TikTok</a>
-      </div>
+  <div class="wrap foot">
+    <div class="foot-info">
+      <strong>Mako 3D</strong> · Impresión 3D industrial en CABA, Buenos Aires<br>
+      <a href="https://wa.me/5491158067003" target="_blank" rel="noopener noreferrer">+54 9 11 5806-7003</a> · <a href="mailto:info@mako3d.com.ar">info@mako3d.com.ar</a> · <a href="/guias/">Guías</a><br>
+      © 2026 Mako 3D · <a href="/politica-de-privacidad">Política de privacidad</a> · <a href="/condiciones-del-servicio">Condiciones del servicio</a>
+    </div>
+    <div class="foot-social">
+      <a href="https://www.instagram.com/mako3d.ar/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://www.linkedin.com/company/mako3d/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://www.tiktok.com/@mako.3d" target="_blank" rel="noopener noreferrer">TikTok</a>
     </div>
   </div>
 </footer>
-
-<div class="lightbox" id="lightbox">
-  <div class="lb-close" id="lbClose">CERRAR ✕</div>
-  <img id="lbImg" src="" alt="">
-  <div class="lb-cap" id="lbCap"></div>
-</div>
 
 <a href="https://wa.me/5491158067003?text=Hola%2C%20vengo%20de%20la%20web%20de%20Mako%203D.%20Necesito%20cotizar%20una%20pieza." target="_blank" rel="noopener noreferrer" class="wa-float" aria-label="Escribinos por WhatsApp">
   <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="currentColor" d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35zM12.04 21.5h-.01a9.45 9.45 0 0 1-4.82-1.32l-.35-.2-3.58.94.96-3.49-.23-.36a9.43 9.43 0 0 1-1.45-5.03c0-5.22 4.25-9.47 9.48-9.47 2.53 0 4.91.99 6.7 2.78a9.41 9.41 0 0 1 2.77 6.7c0 5.22-4.25 9.46-9.47 9.46zm8.06-17.53A11.33 11.33 0 0 0 12.04.63C5.76.63.65 5.74.65 12.02c0 2.01.52 3.97 1.52 5.7L.55 23.63l6.05-1.59a11.36 11.36 0 0 0 5.44 1.39h.01c6.28 0 11.39-5.11 11.39-11.39 0-3.04-1.19-5.9-3.34-8.06z"/></svg>
 </a>
 
-<button id="toTop" class="to-top" aria-label="Volver arriba">↑</button>
-
-<script src="script.js" defer></script>
+<script src="home.js?v=1" defer></script>
 
 </body>
 </html>
