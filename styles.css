@@ -143,6 +143,7 @@
 
   .services-note{margin-top:24px;color:var(--text-dim);font-size:.9rem;}
   .services-note a{color:var(--blue);text-decoration:underline;}
+  .text-link{color:var(--blue);text-decoration:underline;white-space:nowrap;}
 
   /* PARA QUIÉN */
   .sectors{background:var(--bg-2);border-top:1px solid var(--line);}
