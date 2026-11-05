@@ -42,6 +42,17 @@
     });
   });
 
+  // --- Analytics: desde qué botón entran al cotizador online ---
+  document.querySelectorAll('a[href="cotizar"], a[href="/cotizar"]').forEach(link => {
+    link.addEventListener('click', () => {
+      if (typeof gtag !== 'function') return;
+      const section = link.closest('section, header, footer');
+      gtag('event', 'ir_al_cotizador', {
+        location: section ? (section.id || section.className || section.tagName.toLowerCase()) : 'otro'
+      });
+    });
+  });
+
   // --- Logo: volver arriba ---
   const logoTop = document.getElementById('logoTop');
   if (logoTop) {
